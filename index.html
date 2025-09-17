@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. José Sousa - Fisioterapeuta | Movimente-se melhor, Viva sem dor</title>
+    <meta name="description" content="Fisioterapeuta especializado em reabilitação e tratamento da dor. Agende sua consulta e volte a se movimentar sem limitações.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="fisioterapeuta, reabilitação, tratamento da dor, José Sousa, fisioterapia">
+    <meta name="author" content="Dr. José Sousa">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dr. José Sousa - Fisioterapeuta">
+    <meta property="og:description" content="Fisioterapeuta especializado em reabilitação e tratamento da dor">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">JS</div>
+                    <span class="logo-text">Dr. José Sousa</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#inicio" class="nav-link">Início</a>
+                    <a href="#sobre" class="nav-link">Sobre</a>
+                    <a href="#servicos" class="nav-link">Serviços</a>
+                    <a href="#administracao" class="nav-link">Gestão</a>
+                    <a href="#ebooks" class="nav-link">eBooks</a>
+                    <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                    <a href="#contato" class="nav-link">Contato</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="header-cta">
+                    <button class="btn btn-primary" onclick="openWhatsApp()">
+                        Agende sua consulta
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <nav class="mobile-nav">
+                    <a href="#inicio" class="mobile-nav-link">Início</a>
+                    <a href="#sobre" class="mobile-nav-link">Sobre</a>
+                    <a href="#servicos" class="mobile-nav-link">Serviços</a>
+                    <a href="#administracao" class="mobile-nav-link">Gestão</a>
+                    <a href="#ebooks" class="mobile-nav-link">eBooks</a>
+                    <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+                    <a href="#contato" class="mobile-nav-link">Contato</a>
+                </nav>
+                <button class="btn btn-primary mobile-cta" onclick="openWhatsApp()">
+                    Agende sua consulta
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Left Column -->
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            Movimente-se <span class="text-highlight">melhor</span>.<br>
+                            Viva sem dor.
+                        </h1>
+                        <p class="hero-description">
+                            Especialista em reabilitação e tratamento da dor. Recupere sua mobilidade 
+                            e qualidade de vida com tratamentos personalizados e baseados em evidência.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary btn-lg" onclick="openWhatsApp()">
+                                Agende pelo WhatsApp
+                            </button>
+                            <button class="btn btn-outline btn-lg" onclick="scrollToSection('#servicos')">
+                                Veja meus serviços
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="hero-image-container">
+                        <div class="hero-image">
+                            <img src="src/assets/hero-physio.jpg" alt="Consultório de fisioterapia moderno com equipamentos de reabilitação">
+                        </div>
+                        
+                        <!-- Proof Social Card -->
+                        <div class="proof-card">
+                            <div class="proof-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <div class="proof-text">
+                                <div class="proof-number">+1000</div>
+                                <div class="proof-label">Pacientes tratados</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="sobre" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Sobre <span class="text-highlight">Dr. José Sousa</span>
+                    </h2>
+                    <p class="section-subtitle">CREFITO-3/123456</p>
+                </div>
+
+                <div class="about-content">
+                    <!-- Photo -->
+                    <div class="about-photo">
+                        <img src="src/assets/doctor-profile.jpg" alt="Dr. José Sousa - Fisioterapeuta" class="doctor-image">
+                    </div>
+
+                    <!-- Information -->
+                    <div class="about-info">
+                        <div class="about-description">
+                            <p>
+                                Dedico minha carreira a ajudar pessoas a recuperarem sua mobilidade e 
+                                qualidade de vida. Com mais de uma década de experiência, desenvolvi uma 
+                                abordagem personalizada que combina técnicas tradicionais com as mais 
+                                modernas evidências científicas.
+                            </p>
+                        </div>
+
+                        <!-- Qualifications -->
+                        <div class="qualifications">
+                            <div class="qualification-card">
+                                <div class="qualification-icon">
+                                    <i data-lucide="graduation-cap"></i>
+                                </div>
+                                <div class="qualification-info">
+                                    <h3>Formação</h3>
+                                    <p>Fisioterapia - Universidade de Picos (USP)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="qualification-card">
+                                <div class="qualification-icon">
+                                    <i data-lucide="award"></i>
+                                </div>
+                                <div class="qualification-info">
+                                    <h3>Especialização</h3>
+                                    <p>Ortopedia e Traumatologia Esportiva</p>
+                                </div>
+                            </div>
+                            
+                            <div class="qualification-card">
+                                <div class="qualification-icon">
+                                    <i data-lucide="clock"></i>
+                                </div>
+                                <div class="qualification-info">
+                                    <h3>Experiência</h3>
+                                    <p>12+ anos tratando pacientes</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline -->
+                        <div class="timeline">
+                            <h3 class="timeline-title">Trajetória Profissional</h3>
+                            <div class="timeline-items">
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2012</div>
+                                    <div class="timeline-content">
+                                        <h4>Graduação em Fisioterapia</h4>
+                                        <p>Universidade de Picos (USP)</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2014</div>
+                                    <div class="timeline-content">
+                                        <h4>Especialização em Ortopedia</h4>
+                                        <p>Hospital das Clínicas - SP</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2016</div>
+                                    <div class="timeline-content">
+                                        <h4>Clínica Privada</h4>
+                                        <p>Abertura do consultório próprio</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2020</div>
+                                    <div class="timeline-content">
+                                        <h4>Pós-graduação</h4>
+                                        <p>Fisioterapia Esportiva - UNIFESP</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicos" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Meus <span class="text-highlight">Serviços</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Oferecemos tratamentos especializados e personalizados para diversas condições, 
+                        sempre com base em evidências científicas e técnicas modernas.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon service-icon-blue">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <h3>Fisioterapia Esportiva</h3>
+                        <p>Prevenção e tratamento de lesões em atletas, com foco na performance e retorno seguro ao esporte.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon service-icon-red">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <h3>Reabilitação Cardíaca</h3>
+                        <p>Programa especializado para pacientes com problemas cardiovasculares, melhorando qualidade de vida.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon service-icon-purple">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3>Fisioterapia Neurológica</h3>
+                        <p>Tratamento para sequelas neurológicas, AVC, Parkinson e outras condições do sistema nervoso.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon service-icon-green">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <h3>Ortopedia e Traumatologia</h3>
+                        <p>Reabilitação pós-cirúrgica e tratamento de lesões musculoesqueléticas diversas.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon service-icon-orange">
+                            <i data-lucide="target"></i>
+                        </div>
+                        <h3>RPG - Reeducação Postural</h3>
+                        <p>Correção de desvios posturais e alinhamento corporal através de técnicas específicas.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon service-icon-teal">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Fisioterapia Geriátrica</h3>
+                        <p>Cuidados especializados para idosos, focando em mobilidade, equilíbrio e independência.</p>
+                    </div>
+                </div>
+
+                <div class="services-footer">
+                    <p>Não encontrou o que procura? Entre em contato para conhecer outros tratamentos disponíveis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultados" class="results">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="text-highlight">Antes</span> e Depois
+                    </h2>
+                    <p class="section-subtitle">
+                        Veja alguns dos resultados alcançados com nossos pacientes. 
+                        Cada caso é único e os resultados podem variar.
+                    </p>
+                </div>
+
+                <div class="results-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide active" data-slide="0">
+                            <div class="result-content">
+                                <h3>Correção Postural - 6 meses</h3>
+                                <p>Paciente de 35 anos com síndrome do pescoço reto, após 6 meses de tratamento com RPG e exercícios específicos.</p>
+                                <div class="result-image">
+                                    <img src="src/assets/before-after-posture.jpg" alt="Resultado: Correção Postural - 6 meses">
+                                    <div class="image-labels">
+                                        <span class="label-before">ANTES</span>
+                                        <span class="label-after">DEPOIS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-slide" data-slide="1">
+                            <div class="result-content">
+                                <h3>Reabilitação Joelho - 4 meses</h3>
+                                <p>Atleta recuperado após cirurgia de ligamento cruzado anterior, retorno completo às atividades esportivas.</p>
+                                <div class="result-image">
+                                    <img src="src/assets/before-after-posture.jpg" alt="Resultado: Reabilitação Joelho - 4 meses">
+                                    <div class="image-labels">
+                                        <span class="label-before">ANTES</span>
+                                        <span class="label-after">DEPOIS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-slide" data-slide="2">
+                            <div class="result-content">
+                                <h3>Lombalgia Crônica - 3 meses</h3>
+                                <p>Redução significativa da dor lombar em paciente com hérnia de disco, sem necessidade de cirurgia.</p>
+                                <div class="result-image">
+                                    <img src="src/assets/before-after-posture.jpg" alt="Resultado: Lombalgia Crônica - 3 meses">
+                                    <div class="image-labels">
+                                        <span class="label-before">ANTES</span>
+                                        <span class="label-after">DEPOIS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <button class="carousel-btn carousel-btn-prev" onclick="previousSlide('results')">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" onclick="nextSlide('results')">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Dots Indicator -->
+                    <div class="carousel-dots" id="resultsDots">
+                        <button class="dot active" onclick="goToSlide('results', 0)"></button>
+                        <button class="dot" onclick="goToSlide('results', 1)"></button>
+                        <button class="dot" onclick="goToSlide('results', 2)"></button>
+                    </div>
+                </div>
+
+                <div class="results-disclaimer">
+                    <p>* Resultados podem variar de pessoa para pessoa. Consulte sempre um profissional qualificado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="depoimentos" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title text-white">
+                        O que dizem meus <span class="text-primary-glow">pacientes</span>
+                    </h2>
+                    <p class="section-subtitle text-white-opacity">
+                        A satisfação dos nossos pacientes é nossa maior conquista. 
+                        Veja o que eles têm a dizer sobre os resultados obtidos.
+                    </p>
+                </div>
+
+                <div class="testimonials-carousel">
+                    <div class="carousel-container">
+                        <div class="testimonial-slide active" data-slide="0">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                </div>
+                                <blockquote>
+                                    "Dr. José transformou minha vida! Sofria com dores nas costas há anos e hoje estou completamente recuperada. Profissional excepcional e muito atencioso."
+                                </blockquote>
+                                <div class="testimonial-author">Maria Silva</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-slide" data-slide="1">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                </div>
+                                <blockquote>
+                                    "Após a cirurgia no joelho, pensei que não voltaria a correr. Com o tratamento do Dr. José, não só voltei como melhorei minha performance. Muito grato!"
+                                </blockquote>
+                                <div class="testimonial-author">Carlos Oliveira</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-slide" data-slide="2">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                </div>
+                                <blockquote>
+                                    "Excelente profissional! O tratamento para minha tendinite foi muito eficaz. Recomendo para todos que precisam de um fisioterapeuta competente."
+                                </blockquote>
+                                <div class="testimonial-author">Ana Costa</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-slide" data-slide="3">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                    <i data-lucide="star" class="star filled"></i>
+                                </div>
+                                <blockquote>
+                                    "Depois de meses com dor ciática, finalmente encontrei alívio. Dr. José é muito dedicado e explica tudo detalhadamente. Top!"
+                                </blockquote>
+                                <div class="testimonial-author">Roberto Santos</div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <button class="carousel-btn carousel-btn-prev" onclick="previousSlide('testimonials')">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" onclick="nextSlide('testimonials')">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Dots Indicator -->
+                    <div class="carousel-dots" id="testimonialsDots">
+                        <button class="dot active" onclick="goToSlide('testimonials', 0)"></button>
+                        <button class="dot" onclick="goToSlide('testimonials', 1)"></button>
+                        <button class="dot" onclick="goToSlide('testimonials', 2)"></button>
+                        <button class="dot" onclick="goToSlide('testimonials', 3)"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="dicas" class="blog">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Dicas de <span class="text-highlight">Saúde</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Compartilho conhecimento e dicas valiosas para você cuidar melhor da sua saúde 
+                        e prevenir problemas antes que eles apareçam.
+                    </p>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-icon blog-icon-blue">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <div class="blog-meta">
+                            <span>5 min de leitura</span>
+                        </div>
+                        <h3>5 Exercícios para Fortalecer as Costas</h3>
+                        <p>Aprenda exercícios simples que você pode fazer em casa para prevenir e tratar dores nas costas.</p>
+                        <a href="#" class="read-more">
+                            Ler mais <i data-lucide="arrow-right"></i>
+                        </a>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-icon blog-icon-green">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <div class="blog-meta">
+                            <span>7 min de leitura</span>
+                        </div>
+                        <h3>Como Melhorar sua Postura no Trabalho</h3>
+                        <p>Dicas práticas para manter uma postura saudável durante longas horas no escritório.</p>
+                        <a href="#" class="read-more">
+                            Ler mais <i data-lucide="arrow-right"></i>
+                        </a>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-icon blog-icon-orange">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <div class="blog-meta">
+                            <span>6 min de leitura</span>
+                        </div>
+                        <h3>Prevenção de Lesões no Esporte</h3>
+                        <p>Estratégias essenciais para atletas evitarem lesões e manterem alta performance.</p>
+                        <a href="#" class="read-more">
+                            Ler mais <i data-lucide="arrow-right"></i>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="blog-footer">
+                    <button class="btn btn-outline btn-lg">Ver todos os artigos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilates Studio Management Section -->
+        <section id="administracao" class="pilates-management">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Administração e Gestão de <span class="text-highlight">Estúdios de Pilates</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Transforme seu estúdio de Pilates em um negócio próspero com estratégias comprovadas 
+                        de gestão, marketing e crescimento profissional.
+                    </p>
+                </div>
+
+                <div class="management-content">
+                    <div class="management-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <h3>Gestão Financeira</h3>
+                            <p>Aprenda a controlar custos, aumentar receitas e maximizar a lucratividade do seu estúdio.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <h3>Captação de Alunos</h3>
+                            <p>Estratégias eficazes para atrair novos alunos e manter alta taxa de retenção.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i data-lucide="calendar"></i>
+                            </div>
+                            <h3>Organização de Horários</h3>
+                            <p>Otimize sua agenda e maximize o aproveitamento dos horários disponíveis.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i data-lucide="star"></i>
+                            </div>
+                            <h3>Qualidade do Serviço</h3>
+                            <p>Eleve o padrão do seu atendimento e crie uma experiência única para seus alunos.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i data-lucide="megaphone"></i>
+                            </div>
+                            <h3>Marketing Digital</h3>
+                            <p>Domine as redes sociais e estratégias online para divulgar seu estúdio.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i data-lucide="award"></i>
+                            </div>
+                            <h3>Desenvolvimento Profissional</h3>
+                            <p>Aprimore suas habilidades técnicas e de liderança para se destacar no mercado.</p>
+                        </div>
+                    </div>
+
+                    <div class="management-cta">
+                        <div class="cta-card">
+                            <h3>Acelere sua carreira com mentoria personalizada</h3>
+                            <p>
+                                Receba orientação direta de um profissional experiente e transforme 
+                                seu estúdio em um negócio de sucesso. Mentoria individual com 
+                                estratégias práticas e resultados comprovados.
+                            </p>
+                            <div class="cta-benefits">
+                                <div class="benefit-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Consultoria personalizada para seu negócio</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Plano de ação específico para seus objetivos</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Suporte contínuo durante todo o processo</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Acesso a materiais exclusivos e templates</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-lg" onclick="openMentoriaWhatsApp()">
+                                <i data-lucide="rocket"></i>
+                                Quero acelerar minha carreira com mentoria
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- eBooks Store Section -->
+        <section id="ebooks" class="ebooks-store">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Loja de <span class="text-highlight">eBooks</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Materiais exclusivos para profissionais de Pilates que desejam se destacar 
+                        e oferecer o melhor serviço aos seus alunos.
+                    </p>
+                </div>
+
+                <div class="ebooks-grid">
+                    <div class="ebook-card">
+                        <div class="ebook-cover">
+                            <img src="src/assets/ebook-pilates-kids.jpg" alt="Capa do eBook Pilates Kids - Guia Prático">
+                            <div class="ebook-badge">Mais Vendido</div>
+                        </div>
+                        <div class="ebook-content">
+                            <h3>Pilates Kids – Guia Prático</h3>
+                            <p class="ebook-description">
+                                Guia completo para trabalhar com crianças no Pilates. Inclui exercícios 
+                                adaptados, técnicas lúdicas e estratégias para manter o engajamento dos 
+                                pequenos durante as aulas.
+                            </p>
+                            <div class="ebook-features">
+                                <div class="feature-item">
+                                    <i data-lucide="book-open"></i>
+                                    <span>120 páginas de conteúdo</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i data-lucide="play-circle"></i>
+                                    <span>50+ exercícios ilustrados</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i data-lucide="users"></i>
+                                    <span>Idades de 4 a 12 anos</span>
+                                </div>
+                            </div>
+                            <div class="ebook-price">
+                                <span class="price-old">R$ 97,00</span>
+                                <span class="price-current">R$ 67,00</span>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-full" onclick="buyEbook('pilates-kids')">
+                                <i data-lucide="shopping-cart"></i>
+                                Comprar agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="ebook-card">
+                        <div class="ebook-cover">
+                            <img src="src/assets/ebook-exercicios-alunos.jpg" alt="Capa do eBook Guia de Exercícios de Pilates para Alunos">
+                            <div class="ebook-badge">Novidade</div>
+                        </div>
+                        <div class="ebook-content">
+                            <h3>Guia de Exercícios de Pilates para Alunos</h3>
+                            <p class="ebook-description">
+                                Material didático completo para seus alunos praticarem em casa. 
+                                Exercícios organizados por nível de dificuldade com instruções 
+                                claras e ilustrações detalhadas.
+                            </p>
+                            <div class="ebook-features">
+                                <div class="feature-item">
+                                    <i data-lucide="book-open"></i>
+                                    <span>80 páginas ilustradas</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i data-lucide="target"></i>
+                                    <span>3 níveis de dificuldade</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i data-lucide="home"></i>
+                                    <span>Exercícios para casa</span>
+                                </div>
+                            </div>
+                            <div class="ebook-price">
+                                <span class="price-old">R$ 67,00</span>
+                                <span class="price-current">R$ 47,00</span>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-full" onclick="buyEbook('exercicios-alunos')">
+                                <i data-lucide="shopping-cart"></i>
+                                Comprar agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="ebook-card">
+                        <div class="ebook-cover">
+                            <img src="src/assets/ebook-documentos-studio.jpg" alt="Capa do eBook Pacote de documentos obrigatório para seu studio">
+                            <div class="ebook-badge">Essencial</div>
+                        </div>
+                        <div class="ebook-content">
+                            <h3>Pacote de documentos obrigatório para seu studio</h3>
+                            <p class="ebook-description">
+                                Todos os documentos legais e formulários necessários para abrir e 
+                                operar seu estúdio de Pilates. Modelos prontos e personalizáveis 
+                                para uso imediato.
+                            </p>
+                            <div class="ebook-features">
+                                <div class="feature-item">
+                                    <i data-lucide="file-text"></i>
+                                    <span>15+ documentos legais</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i data-lucide="edit"></i>
+                                    <span>Modelos editáveis</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i data-lucide="shield-check"></i>
+                                    <span>Conformidade legal</span>
+                                </div>
+                            </div>
+                            <div class="ebook-price">
+                                <span class="price-old">R$ 127,00</span>
+                                <span class="price-current">R$ 87,00</span>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-full" onclick="buyEbook('documentos-studio')">
+                                <i data-lucide="shopping-cart"></i>
+                                Comprar agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ebooks-footer">
+                    <div class="guarantee-card">
+                        <div class="guarantee-icon">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <div class="guarantee-content">
+                            <h4>Garantia de 7 dias</h4>
+                            <p>Se não ficar satisfeito, devolvemos 100% do seu dinheiro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h2>Receba dicas exclusivas e novidades</h2>
+                        <p>
+                            Cadastre-se em nossa newsletter e receba conteúdos exclusivos sobre 
+                            Pilates, gestão de estúdios e novos lançamentos de eBooks.
+                        </p>
+                    </div>
+                    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                        <div class="form-group-inline">
+                            <input 
+                                type="email" 
+                                id="newsletter-email" 
+                                name="email" 
+                                required 
+                                placeholder="Seu melhor e-mail"
+                                class="newsletter-input"
+                            >
+                            <button type="submit" class="btn btn-primary">
+                                <i data-lucide="mail"></i>
+                                Cadastrar
+                            </button>
+                        </div>
+                        <p class="newsletter-disclaimer">
+                            Seus dados estão seguros. Não enviamos spam.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contato" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Entre em <span class="text-highlight">Contato</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Pronto para começar seu tratamento? Entre em contato e agende sua consulta. 
+                        Estou aqui para ajudar você a recuperar sua qualidade de vida.
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="contact-form-card">
+                            <h3>Envie sua mensagem</h3>
+                            
+                            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                                <div class="form-group">
+                                    <label for="name">Nome completo</label>
+                                    <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Relate o que está acontecendo</label>
+                                    <textarea id="message" name="message" required placeholder="Conte-me sobre seu problema ou dúvida..." rows="5"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg btn-full">
+                                    <i data-lucide="message-circle"></i>
+                                    Enviar pelo WhatsApp
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h3>Informações de contato</h3>
+                        <p class="contact-description">
+                            Prefere falar diretamente? Escolha a forma de contato que for mais conveniente para você.
+                        </p>
+
+                        <div class="contact-cards">
+                            <div class="contact-card clickable" onclick="openWhatsApp()">
+                                <div class="contact-icon">
+                                    <i data-lucide="message-circle"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>WhatsApp</h4>
+                                    <p>(89) 9 9458-4100</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-card clickable" onclick="openInstagram()">
+                                <div class="contact-icon">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Instagram</h4>
+                                    <p>@josedsousafisio</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i data-lucide="clock"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Horário de Funcionamento</h4>
+                                    <p>Seg-Sex: 8h às 18h<br>Sáb: 8h às 12h</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-card">
+                                <div class="contact-icon">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Endereço da Clínica</h4>
+                                    <p>
+                                        Rua das Flores, 123 - Sala 45<br>
+                                        Vila Madalena - Picos|PI<br>
+                                        CEP: 64600-004
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">JS</div>
+                        <div class="logo-text">
+                            <h3>Dr. José Sousa</h3>
+                            <p>Fisioterapeuta</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Especialista em reabilitação e tratamento da dor. 
+                        Ajudando pessoas a recuperarem sua mobilidade e qualidade de vida.
+                    </p>
+                    <p class="footer-crefito">CREFITO-3/123456</p>
+                </div>
+
+                <!-- Contact Links -->
+                <div class="footer-contact">
+                    <h4>Contato Direto</h4>
+                    <div class="footer-contact-links">
+                        <a href="#" onclick="openWhatsApp()" class="footer-contact-link">
+                            <div class="contact-link-icon whatsapp">
+                                <i data-lucide="message-circle"></i>
+                            </div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">WhatsApp</div>
+                                <div class="contact-link-detail">(89) 9 9458-4100</div>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openInstagram()" class="footer-contact-link">
+                            <div class="contact-link-icon instagram">
+                                <i data-lucide="instagram"></i>
+                            </div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">Instagram</div>
+                                <div class="contact-link-detail">@josedsousafisio</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <nav class="footer-nav">
+                        <a href="#inicio">Início</a>
+                        <a href="#sobre">Sobre</a>
+                        <a href="#servicos">Serviços</a>
+                        <a href="#resultados">Resultados</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#dicas">Dicas de Saúde</a>
+                        <a href="#contato">Contato</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="footer-divider"></div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2025 Dr. José Sousa - Fisioterapeuta. Todos os direitos reservados.
+                </div>
+                
+                <div class="footer-made-with">
+                    <p>Desenvolvido por <a href="https://teuzzx.github.io/duotech0/" target="_blank">DUOTECH</a> | Picos - PI</p>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="footer-disclaimer">
+                <p>
+                    Este site tem caráter informativo e não substitui uma consulta médica. 
+                    Sempre procure orientação profissional para diagnóstico e tratamento adequados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
