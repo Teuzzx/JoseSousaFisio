@@ -51,7 +51,7 @@
 
                 <!-- CTA Button -->
                 <div class="header-cta">
-                    <button class="btn btn-primary" onclick="openWhatsApp()">
+                    <button class="btn btn-primary" onclick="openConsultationWhatsApp()">
                         Agende sua consulta
                     </button>
                 </div>
@@ -73,7 +73,7 @@
                     <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
                     <a href="#contato" class="mobile-nav-link">Contato</a>
                 </nav>
-                <button class="btn btn-primary mobile-cta" onclick="openWhatsApp()">
+                <button class="btn btn-primary mobile-cta" onclick="openConsultationWhatsApp()">
                     Agende sua consulta
                 </button>
             </div>
@@ -92,15 +92,25 @@
                             Viva sem dor.
                         </h1>
                         <p class="hero-description">
-                            Especialista em reabilitação e tratamento da dor. Recupere sua mobilidade 
-                            e qualidade de vida com tratamentos personalizados e baseados em evidência.
+                           Fisioterapeuta especializado em reabilitação e no cuidado da dor, atuando
+                           com o Método Pilates. Além disso, sou apaixonado por ensinar e formar
+                           profissionais preparados para se destacar no mercado com segurança, prática e inovação.
                         </p>
+                        
+                        <!-- Social Media Button -->
+                        <div class="social-follow">
+                            <button class="btn btn-social" onclick="openInstagram()">
+                                <i data-lucide="instagram"></i>
+                                Siga no Instagram
+                            </button>
+                        </div>
+                        
                         <div class="hero-buttons">
                             <button class="btn btn-primary btn-lg" onclick="openWhatsApp()">
-                                Agende pelo WhatsApp
+                                Quero cuidar da minha saúde
                             </button>
-                            <button class="btn btn-outline btn-lg" onclick="scrollToSection('#servicos')">
-                                Veja meus serviços
+                            <button class="btn btn-outline btn-lg" onclick="openProfessionalWhatsApp()">
+                                Quero me profissionalizar
                             </button>
                         </div>
                     </div>
@@ -114,11 +124,32 @@
                         <!-- Proof Social Card -->
                         <div class="proof-card">
                             <div class="proof-icon">
-                                <i data-lucide="users"></i>
+                                <i data-lucide="activity"></i>
                             </div>
                             <div class="proof-text">
-                                <div class="proof-number">+1000</div>
-                                <div class="proof-label">Pacientes tratados</div>
+                                <div class="proof-number">+10 mil</div>
+                                <div class="proof-label">Atendimentos realizados em Pilates</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Proof Cards -->
+                        <div class="proof-card proof-card-secondary">
+                            <div class="proof-icon">
+                                <i data-lucide="calendar"></i>
+                            </div>
+                            <div class="proof-text">
+                                <div class="proof-number">+4 anos</div>
+                                <div class="proof-label">Atuação contínua como fisioterapeuta</div>
+                            </div>
+                        </div>
+                        
+                        <div class="proof-card proof-card-tertiary">
+                            <div class="proof-icon">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <div class="proof-text">
+                                <div class="proof-number">+100</div>
+                                <div class="proof-label">Profissionais capacitados em cursos</div>
                             </div>
                         </div>
                     </div>
@@ -133,23 +164,25 @@
                     <h2 class="section-title">
                         Sobre <span class="text-highlight">Dr. José Sousa</span>
                     </h2>
-                    <p class="section-subtitle">CREFITO-3/123456</p>
+                    <p class="section-subtitle">CREFITO 14: 371030-F</p>
                 </div>
 
                 <div class="about-content">
                     <!-- Photo -->
                     <div class="about-photo">
-                        <img src="src/assets/doctor-profile.jpg" alt="Dr. José Sousa - Fisioterapeuta" class="doctor-image">
+                        <img src="profile.png" alt="Dr. José Sousa - Fisioterapeuta" class="doctor-image">
                     </div>
 
                     <!-- Information -->
                     <div class="about-info">
                         <div class="about-description">
                             <p>
-                                Dedico minha carreira a ajudar pessoas a recuperarem sua mobilidade e 
-                                qualidade de vida. Com mais de uma década de experiência, desenvolvi uma 
-                                abordagem personalizada que combina técnicas tradicionais com as mais 
-                                modernas evidências científicas.
+                                Fisioterapeuta, instrutor de Pilates e apaixonado por transformar
+                                vidas através do movimento. Com uma trajetória sólida e diferenciada, 
+                                marcada pela busca constante por conhecimento e excelência. 
+                                Mais do que fisioterapeuta e instrutor, José é educador, mentor e visionário. 
+                                Com dedicação, bom humor e amor pelo que faz, ele prova que quando paixão e 
+                                conhecimento se encontram, o impacto é transformador.
                             </p>
                         </div>
 
@@ -191,21 +224,21 @@
                             <h3 class="timeline-title">Trajetória Profissional</h3>
                             <div class="timeline-items">
                                 <div class="timeline-item">
-                                    <div class="timeline-year">2012</div>
+                                    <div class="timeline-year">2023</div>
                                     <div class="timeline-content">
                                         <h4>Graduação em Fisioterapia</h4>
-                                        <p>Universidade de Picos (USP)</p>
+                                        <p>Instituto de Educação Superior Raimundo Sá – IESRSA (Picos-PI).</p>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <div class="timeline-year">2014</div>
+                                    <div class="timeline-year">2023</div>
                                     <div class="timeline-content">
                                         <h4>Especialização em Ortopedia</h4>
                                         <p>Hospital das Clínicas - SP</p>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <div class="timeline-year">2016</div>
+                                    <div class="timeline-year">2023</div>
                                     <div class="timeline-content">
                                         <h4>Clínica Privada</h4>
                                         <p>Abertura do consultório próprio</p>
@@ -225,6 +258,60 @@
             </div>
         </section>
 
+        <!-- Nossa Filosofia Section -->
+        <section id="filosofia" class="filosofia">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Nossa <span class="text-highlight">Filosofia</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Conheça os valores e princípios que guiam nosso trabalho e compromisso com a excelência.
+                    </p>
+                </div>
+
+                <div class="filosofia-content">
+                    <div class="filosofia-card">
+                        <div class="filosofia-icon">
+                            <i data-lucide="target"></i>
+                        </div>
+                        <h3>Missão</h3>
+                        <p>
+                            Promover saúde, aliviar dores e devolver qualidade de vida por meio do Método Pilates, 
+                            sempre unindo ciência e cuidado humano. Também tenho como propósito compartilhar 
+                            conhecimento e capacitar profissionais com excelência técnica e sensibilidade, 
+                            transformando vidas através do aprendizado e da prática responsável.
+                        </p>
+                    </div>
+
+                    <div class="filosofia-card">
+                        <div class="filosofia-icon">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <h3>Visão</h3>
+                        <p>
+                            Ser reconhecido nacionalmente como referência no Método Pilates, integrando ensino 
+                            e prática para formar profissionais capacitados e transformar vidas por meio do movimento. 
+                            Estabelecer um padrão de qualidade que gere impacto positivo em minha comunidade e 
+                            inspire profissionais e clientes em todo o Brasil.
+                        </p>
+                    </div>
+
+                    <div class="filosofia-card">
+                        <div class="filosofia-icon">
+                            <i data-lucide="heart-handshake"></i>
+                        </div>
+                        <h3>Compromisso</h3>
+                        <p>
+                            Oferecer atendimentos e cursos com dedicação, acolhimento e excelência, buscando 
+                            atualização constante para entregar resultados reais e preparar profissionais para 
+                            se destacarem com segurança, prática e inovação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Services Section -->
         <section id="servicos" class="services">
             <div class="container">
@@ -233,58 +320,99 @@
                         Meus <span class="text-highlight">Serviços</span>
                     </h2>
                     <p class="section-subtitle">
-                        Oferecemos tratamentos especializados e personalizados para diversas condições, 
-                        sempre com base em evidências científicas e técnicas modernas.
+                        Aqui você encontra atendimentos em Fisioterapia e Pilates, além de capacitações 
+                        exclusivas para profissionais. Tudo é desenvolvido com base científica e conduzido 
+                        com cuidado humano, para ajudar você a superar dores, recuperar a saúde e 
+                        transformar sua vida por meio do movimento.
                     </p>
                 </div>
 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon service-icon-blue">
-                            <i data-lucide="activity"></i>
+                <!-- Service Categories -->
+                <div class="service-categories">
+                    <h3 class="category-title">Atendimentos</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon service-icon-blue">
+                                <i data-lucide="activity"></i>
+                            </div>
+                            <h3>Atendimento de Pilates Presencial</h3>
+                            <p>No Studio de Postura Barroso, com programas personalizados para postura, dores e fortalecimento.</p>
+                            <button class="btn btn-outline service-btn" onclick="openServiceWhatsApp('pilates-presencial')">
+                                Quero esse serviço
+                            </button>
                         </div>
-                        <h3>Fisioterapia Esportiva</h3>
-                        <p>Prevenção e tratamento de lesões em atletas, com foco na performance e retorno seguro ao esporte.</p>
+                        
+                        <div class="service-card">
+                            <div class="service-icon service-icon-green">
+                                <i data-lucide="monitor"></i>
+                            </div>
+                            <h3>Atendimento de Pilates Online</h3>
+                            <p>Aulas ao vivo, adaptadas ao espaço e recursos que você tem em casa, com flexibilidade de horários.</p>
+                            <button class="btn btn-outline service-btn" onclick="openServiceWhatsApp('pilates-online')">
+                                Quero esse serviço
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon-red">
-                            <i data-lucide="heart"></i>
+
+                    <h3 class="category-title">Formação Profissional</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon service-icon-purple">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <h3>Formação Completa em Pilates</h3>
+                            <p>Curso de 200h: Solo, Bola, Aparelhos e Acessórios, com prática supervisionada.</p>
+                            <button class="btn btn-outline service-btn" onclick="openServiceWhatsApp('formacao-pilates')">
+                                Saiba mais
+                            </button>
                         </div>
-                        <h3>Reabilitação Cardíaca</h3>
-                        <p>Programa especializado para pacientes com problemas cardiovasculares, melhorando qualidade de vida.</p>
+                        
+                        <div class="service-card">
+                            <div class="service-icon service-icon-orange">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <h3>Workshops</h3>
+                            <p>Pilates Kids, Mat Pilates e Pilates nas Disfunções da Coluna Vertebral.</p>
+                            <button class="btn btn-outline service-btn" onclick="openServiceWhatsApp('workshops')">
+                                Saiba mais
+                            </button>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon service-icon-teal">
+                                <i data-lucide="target"></i>
+                            </div>
+                            <h3>Mentoria Online</h3>
+                            <p>Gestão de estúdios, planejamento de aulas e desenvolvimento de carreira no Pilates.</p>
+                            <button class="btn btn-outline service-btn" onclick="openServiceWhatsApp('mentoria')">
+                                Saiba mais
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon-purple">
-                            <i data-lucide="zap"></i>
+
+                    <h3 class="category-title">Materiais Digitais</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon service-icon-red">
+                                <i data-lucide="book-open"></i>
+                            </div>
+                            <h3>E-books</h3>
+                            <p>Materiais digitais exclusivos sobre Método Pilates.</p>
+                            <button class="btn btn-outline service-btn" onclick="scrollToSection('#ebooks')">
+                                Ver e-books
+                            </button>
                         </div>
-                        <h3>Fisioterapia Neurológica</h3>
-                        <p>Tratamento para sequelas neurológicas, AVC, Parkinson e outras condições do sistema nervoso.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon-green">
-                            <i data-lucide="shield"></i>
+                        
+                        <div class="service-card">
+                            <div class="service-icon service-icon-blue">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <h3>Modelos Editáveis</h3>
+                            <p>Documentos prontos e editáveis para auxiliar na administração e padronização de estúdios.</p>
+                            <button class="btn btn-outline service-btn" onclick="openServiceWhatsApp('modelos-editaveis')">
+                                Saiba mais
+                            </button>
                         </div>
-                        <h3>Ortopedia e Traumatologia</h3>
-                        <p>Reabilitação pós-cirúrgica e tratamento de lesões musculoesqueléticas diversas.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon-orange">
-                            <i data-lucide="target"></i>
-                        </div>
-                        <h3>RPG - Reeducação Postural</h3>
-                        <p>Correção de desvios posturais e alinhamento corporal através de técnicas específicas.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon-teal">
-                            <i data-lucide="users"></i>
-                        </div>
-                        <h3>Fisioterapia Geriátrica</h3>
-                        <p>Cuidados especializados para idosos, focando em mobilidade, equilíbrio e independência.</p>
                     </div>
                 </div>
 
@@ -378,8 +506,8 @@
         <section id="depoimentos" class="testimonials">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title text-white">
-                        O que dizem meus <span class="text-primary-glow">pacientes</span>
+                    <h2 class="section-title">
+                        <span style="color: black;">O que dizem meus</span> <span class="text-primary-glow">pacientes</span>
                     </h2>
                     <p class="section-subtitle text-white-opacity">
                         A satisfação dos nossos pacientes é nossa maior conquista. 
@@ -469,69 +597,6 @@
                         <button class="dot" onclick="goToSlide('testimonials', 2)"></button>
                         <button class="dot" onclick="goToSlide('testimonials', 3)"></button>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="dicas" class="blog">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        Dicas de <span class="text-highlight">Saúde</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Compartilho conhecimento e dicas valiosas para você cuidar melhor da sua saúde 
-                        e prevenir problemas antes que eles apareçam.
-                    </p>
-                </div>
-
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-icon blog-icon-blue">
-                            <i data-lucide="book-open"></i>
-                        </div>
-                        <div class="blog-meta">
-                            <span>5 min de leitura</span>
-                        </div>
-                        <h3>5 Exercícios para Fortalecer as Costas</h3>
-                        <p>Aprenda exercícios simples que você pode fazer em casa para prevenir e tratar dores nas costas.</p>
-                        <a href="#" class="read-more">
-                            Ler mais <i data-lucide="arrow-right"></i>
-                        </a>
-                    </article>
-                    
-                    <article class="blog-card">
-                        <div class="blog-icon blog-icon-green">
-                            <i data-lucide="activity"></i>
-                        </div>
-                        <div class="blog-meta">
-                            <span>7 min de leitura</span>
-                        </div>
-                        <h3>Como Melhorar sua Postura no Trabalho</h3>
-                        <p>Dicas práticas para manter uma postura saudável durante longas horas no escritório.</p>
-                        <a href="#" class="read-more">
-                            Ler mais <i data-lucide="arrow-right"></i>
-                        </a>
-                    </article>
-                    
-                    <article class="blog-card">
-                        <div class="blog-icon blog-icon-orange">
-                            <i data-lucide="shield"></i>
-                        </div>
-                        <div class="blog-meta">
-                            <span>6 min de leitura</span>
-                        </div>
-                        <h3>Prevenção de Lesões no Esporte</h3>
-                        <p>Estratégias essenciais para atletas evitarem lesões e manterem alta performance.</p>
-                        <a href="#" class="read-more">
-                            Ler mais <i data-lucide="arrow-right"></i>
-                        </a>
-                    </article>
-                </div>
-
-                <div class="blog-footer">
-                    <button class="btn btn-outline btn-lg">Ver todos os artigos</button>
                 </div>
             </div>
         </section>
@@ -709,8 +774,6 @@
                                     <span>3 níveis de dificuldade</span>
                                 </div>
                                 <div class="feature-item">
-                                    <i data-lucide="home"></i>
-                                    <span>Exercícios para casa</span>
                                 </div>
                             </div>
                             <div class="ebook-price">
@@ -744,10 +807,6 @@
                                 <div class="feature-item">
                                     <i data-lucide="edit"></i>
                                     <span>Modelos editáveis</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i data-lucide="shield-check"></i>
-                                    <span>Conformidade legal</span>
                                 </div>
                             </div>
                             <div class="ebook-price">
@@ -855,11 +914,6 @@
 
                     <!-- Contact Information -->
                     <div class="contact-info">
-                        <h3>Informações de contato</h3>
-                        <p class="contact-description">
-                            Prefere falar diretamente? Escolha a forma de contato que for mais conveniente para você.
-                        </p>
-
                         <div class="contact-cards">
                             <div class="contact-card clickable" onclick="openWhatsApp()">
                                 <div class="contact-icon">
@@ -896,11 +950,11 @@
                                     <i data-lucide="map-pin"></i>
                                 </div>
                                 <div class="contact-details">
-                                    <h4>Endereço da Clínica</h4>
+                                    <h4>Studio de Postura Barroso</h4>
                                     <p>
-                                        Rua das Flores, 123 - Sala 45<br>
-                                        Vila Madalena - Picos|PI<br>
-                                        CEP: 64600-004
+                                        Rua Moacir Luz, N 310
+                                        Canto da Várzea - Picos|PI
+                                        CEP: 64600-178
                                     </p>
                                 </div>
                             </div>
@@ -928,7 +982,7 @@
                         Especialista em reabilitação e tratamento da dor. 
                         Ajudando pessoas a recuperarem sua mobilidade e qualidade de vida.
                     </p>
-                    <p class="footer-crefito">CREFITO-3/123456</p>
+                    <p class="footer-crefito">CREFITO 14: 371030-F</p>
                 </div>
 
                 <!-- Contact Links -->

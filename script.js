@@ -86,9 +86,162 @@ function initSmoothScroll() {
     });
 }
 
-// WhatsApp functionality
+// WhatsApp functionality with specific messages
 function openWhatsApp() {
-    const whatsappUrl = 'https://wa.me/5589994584100?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20de%20fisioterapia.';
+    const whatsappMessage = `Olá Dr. José! 
+
+Tenho interesse em cuidar da minha saúde através do Método Pilates.
+
+Gostaria de saber mais sobre:
+- Atendimentos presenciais no Studio de Postura Barroso
+- Atendimentos online personalizados
+- Programas para postura e alívio de dores
+- Agendamento de avaliação
+
+Aguardo seu contato!`;
+
+    const whatsappUrl = `https://wa.me/5589994584100?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// WhatsApp for professional development
+function openProfessionalWhatsApp() {
+    const professionalMessage = `Olá Dr. José! 
+
+Tenho interesse em me profissionalizar no Método Pilates.
+
+Gostaria de saber mais sobre:
+- Formação Completa em Pilates (200h)
+- Workshops especializados
+- Mentoria online para gestão de estúdios
+- Materiais digitais e e-books
+
+Aguardo informações sobre os cursos!`;
+
+    const whatsappUrl = `https://wa.me/5589994584100?text=${encodeURIComponent(professionalMessage)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// WhatsApp for specific services
+function openServiceWhatsApp(serviceType) {
+    let serviceMessage = '';
+    
+    switch(serviceType) {
+        case 'pilates-presencial':
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse no Atendimento de Pilates Presencial no Studio de Postura Barroso.
+
+Gostaria de saber mais sobre:
+- Programas personalizados para postura
+- Tratamento de dores específicas
+- Fortalecimento muscular
+- Valores e horários disponíveis
+
+Aguardo seu contato!`;
+            break;
+            
+        case 'pilates-online':
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse no Atendimento de Pilates Online.
+
+Gostaria de saber mais sobre:
+- Aulas ao vivo personalizadas
+- Adaptação para meu espaço em casa
+- Flexibilidade de horários
+- Equipamentos necessários
+
+Aguardo informações!`;
+            break;
+            
+        case 'formacao-pilates':
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse na Formação Completa em Pilates (200h).
+
+Gostaria de saber mais sobre:
+- Conteúdo do curso (Solo, Bola, Aparelhos)
+- Prática supervisionada
+- Certificação
+- Valores e formas de pagamento
+
+Aguardo informações sobre a próxima turma!`;
+            break;
+            
+        case 'workshops':
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse nos Workshops especializados.
+
+Gostaria de saber mais sobre:
+- Pilates Kids
+- Mat Pilates
+- Pilates nas Disfunções da Coluna Vertebral
+- Datas e valores
+
+Aguardo informações!`;
+            break;
+            
+        case 'mentoria':
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse na Mentoria Online.
+
+Gostaria de saber mais sobre:
+- Gestão de estúdios de Pilates
+- Planejamento de aulas
+- Desenvolvimento de carreira
+- Estratégias de crescimento profissional
+
+Aguardo seu contato!`;
+            break;
+            
+        case 'modelos-editaveis':
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse nos Modelos Editáveis para estúdios.
+
+Gostaria de saber mais sobre:
+- Documentos para administração
+- Templates de padronização
+- Materiais inclusos
+- Valores e formas de acesso
+
+Aguardo informações!`;
+            break;
+            
+        default:
+            serviceMessage = `Olá Dr. José! 
+
+Tenho interesse em seus serviços de Fisioterapia e Pilates.
+
+Gostaria de mais informações sobre os atendimentos e cursos disponíveis.
+
+Aguardo seu contato!`;
+    }
+    
+    const whatsappUrl = `https://wa.me/5589994584100?text=${encodeURIComponent(serviceMessage)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// WhatsApp for header consultation button
+function openConsultationWhatsApp() {
+    const consultationMessage = `Olá Dr. José! 
+
+Gostaria de agendar uma consulta de Fisioterapia.
+
+Tenho interesse em:
+- Avaliação fisioterapêutica
+- Tratamento de dores
+- Reabilitação
+- Método Pilates
+
+Quando seria possível agendar?
+
+Aguardo seu contato!`;
+
+    const whatsappUrl = `https://wa.me/5589994584100?text=${encodeURIComponent(consultationMessage)}`;
     window.open(whatsappUrl, '_blank');
 }
 
@@ -305,6 +458,9 @@ document.addEventListener('DOMContentLoaded', initLazyLoading);
 
 // Export functions for global access
 window.openWhatsApp = openWhatsApp;
+window.openProfessionalWhatsApp = openProfessionalWhatsApp;
+window.openServiceWhatsApp = openServiceWhatsApp;
+window.openConsultationWhatsApp = openConsultationWhatsApp;
 window.openInstagram = openInstagram;
 window.scrollToSection = scrollToSection;
 window.nextSlide = nextSlide;
