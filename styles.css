@@ -2835,3 +2835,11 @@ section {
     }
 }
 
+
+
+
+/* Custom styles for mobile menu icon */
+.mobile-menu-btn i {
+    color: hsl(var(--foreground));
+}
+
