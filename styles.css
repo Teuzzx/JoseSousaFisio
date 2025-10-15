@@ -2843,12 +2843,7 @@ section {
         text-align: center;
     }
 }
-
-
-
-
 /* Custom styles for mobile menu icon */
 .mobile-menu-btn i {
     color: var(--foreground);
 }
-
