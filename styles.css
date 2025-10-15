@@ -1,3 +1,16 @@
+.hero-buttons .btn,
+.hero-buttons .btn-outline {
+    background: var(--primary-hex) !important;
+    color: #fff !important;
+    border: 2px solid var(--primary-hex) !important;
+    transition: all 0.3s;
+}
+.hero-buttons .btn:hover,
+.hero-buttons .btn-outline:hover {
+    background: #fff !important;
+    color: var(--primary-hex) !important;
+    border: 2px solid var(--primary-hex) !important;
+}
 /* CSS Variables - Design System */
 :root {
     /* Colors (HSL format) */
@@ -611,7 +624,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-foreground);
+    color: #fff !important;
     font-weight: 700;
     font-size: 0.875rem;
     flex-shrink: 0;
@@ -2532,6 +2545,18 @@ button, .btn, .btn-primary, .btn-lg {
 }
 
 /* Service Button */
+/* Botão Quero me profissionalizar: cor azul no texto e fundo branco, hover invertido */
+.service-card button.btn-outline.service-btn {
+    color: var(--primary-hex) !important;
+    background: #fff !important;
+    border: 2px solid var(--primary-hex) !important;
+    transition: all 0.3s;
+}
+.service-card button.btn-outline.service-btn:hover {
+    color: #fff !important;
+    background: var(--primary-hex) !important;
+    border: 2px solid var(--primary-hex) !important;
+}
 .category-title + .services-grid .service-btn {
     color: var(--primary-hex) !important;
     transition: color 0.3s;
