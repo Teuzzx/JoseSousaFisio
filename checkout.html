@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Dr. José Sousa | Compre seu eBook</title>
+    <meta name="description" content="Finalize sua compra com segurança. Formulário seguro para seus dados.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    
+    <style>
+        /* CSS Variables - Design System */
+        :root {
+            --primary-hex: #1c3460;
+            --primary-glow-hex: #2a4e8c;
+            --terracotta-hex: #a8643d;
+            --background: #ffffff;
+            --foreground: #1a1a1a;
+            --border-hex: #e0e0e0;
+            --muted-hex: #f5f5f5;
+            --muted-foreground-hex: #888888;
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary-hex), var(--primary-glow-hex));
+            --shadow-soft: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 35px -5px rgba(28, 52, 96, 0.15);
+            
+            --radius: 0.75rem;
+            --radius-md: 0.55rem;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--foreground);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .checkout-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Left Column - Product Info */
+        .checkout-product {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info {
+            margin-bottom: 3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .back-link i {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .product-header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .product-price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-features {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-item i {
+            width: 1.25rem;
+            height: 1.25rem;
+            flex-shrink: 0;
+            color: #4ade80;
+        }
+
+        .product-guarantee {
+            background: rgba(74, 222, 128, 0.15);
+            border-left: 3px solid #4ade80;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .product-guarantee i {
+            width: 1.25rem;
+            height: 1.25rem;
+            flex-shrink: 0;
+            color: #4ade80;
+            margin-top: 0.125rem;
+        }
+
+        .product-security {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .product-security i {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        /* Right Column - Form */
+        .checkout-form {
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-hex);
+        }
+
+        .form-header p {
+            color: var(--muted-foreground-hex);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--foreground);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-hex);
+            border-radius: var(--radius-md);
+            font-family: var(--font-family);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: var(--muted-hex);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-hex);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(28, 52, 96, 0.1);
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 0.35rem;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .form-group.error .form-error {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-top: 0.15rem;
+            cursor: pointer;
+            accent-color: var(--primary-hex);
+        }
+
+        .terms-text {
+            color: var(--muted-foreground-hex);
+            line-height: 1.5;
+        }
+
+        .terms-text a {
+            color: var(--primary-hex);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            flex: 1;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: var(--muted-hex);
+            color: var(--foreground);
+            border: 2px solid var(--border-hex);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-hex);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            animation: slideInRight 0.3s ease-out;
+            z-index: 1000;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .success-message.show {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Error Message */
+        .error-message {
+            display: none;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #ef4444;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            animation: slideInRight 0.3s ease-out;
+            z-index: 1000;
+        }
+
+        .error-message.show {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .checkout-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-product {
+                padding: 2rem 1.5rem;
+            }
+
+            .checkout-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .product-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkout-wrapper">
+            <!-- Left Column - Product Info -->
+            <div class="checkout-product">
+                <a href="index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Voltar</span>
+                </a>
+
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 id="productName">Pilates Kids – Guia Prático</h1>
+                        <p id="productDescription">Guia completo para trabalhar com crianças no Pilates com exercícios adaptados e técnicas lúdicas.</p>
+                    </div>
+
+                    <div class="product-price-badge">
+                        Valor: <span id="productPrice">R$ 67,00</span>
+                    </div>
+
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>120 páginas de conteúdo completo</span>
+                        </div>
+                        <div class="feature-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>50+ exercícios ilustrados passo a passo</span>
+                        </div>
+                        <div class="feature-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>Acesso via Google Drive imediato</span>
+                        </div>
+                        <div class="feature-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>Suporte técnico por 30 dias</span>
+                        </div>
+                    </div>
+
+                    <div class="product-guarantee">
+                        <i data-lucide="shield"></i>
+                        <div>
+                            <strong>Garantia de 7 dias</strong>
+                            <p style="font-size: 0.85rem; margin-top: 0.25rem;">Se não ficar satisfeito, devolvemos 100% do seu dinheiro, sem perguntas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-security">
+                    <i data-lucide="lock"></i>
+                    <span>Pagamento seguro com Infinity Pay</span>
+                </div>
+            </div>
+
+            <!-- Right Column - Form -->
+            <div class="checkout-form">
+                <div>
+                    <div class="form-header">
+                        <h2>Dados para Entrega</h2>
+                        <p>Preencheha com seus dados para recebermos seu eBook</p>
+                    </div>
+
+                    <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo*</label>
+                            <input 
+                                type="text" 
+                                id="fullName" 
+                                name="fullName" 
+                                placeholder="Seu nome completo"
+                                required
+                            >
+                            <div class="form-error">Nome completo é obrigatório</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail*</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="seu@email.com"
+                                required
+                            >
+                            <div class="form-error">E-mail válido é obrigatório</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone/WhatsApp*</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder="(89) 9 9999-9999"
+                                required
+                            >
+                            <div class="form-error">Telefone é obrigatório</div>
+                        </div>
+
+                        <div class="terms-checkbox">
+                            <input 
+                                type="checkbox" 
+                                id="terms" 
+                                name="terms"
+                                required
+                            >
+                            <div class="terms-text">
+                                Concordo com os <a href="#" onclick="return false;">termos de serviço</a> e autorizo o envio de informações sobre meu eBook via e-mail.
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="index.html" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-primary" id="paymentBtn">
+                                <i data-lucide="credit-card"></i>
+                                Pagar com Infinity Pay
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <i data-lucide="check-circle"></i>
+        <span>Dados salvos com sucesso!</span>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" id="errorMessage">
+        <i data-lucide="alert-circle"></i>
+        <span id="errorText">Ocorreu um erro</span>
+    </div>
+
+    <script src="checkout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

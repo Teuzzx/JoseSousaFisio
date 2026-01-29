@@ -21,11 +21,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Font Awesome Icons - Profissional -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Script for enhancements -->
+    <script src="enhancements.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -57,7 +60,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i data-lucide="menu"></i>
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
 
@@ -713,7 +716,7 @@
                                 <span class="price-old">R$ 97,00</span>
                                 <span class="price-current">R$ 67,00</span>
                             </div>
-                            <button class="btn btn-primary btn-lg btn-full" onclick="buyEbook('pilates-kids')">
+                            <button class="btn btn-primary btn-lg btn-full" onclick="redirectToCheckout('pilates-kids')">
                                 <i data-lucide="shopping-cart"></i>
                                 Comprar agora
                             </button>
@@ -748,7 +751,7 @@
                                 <span class="price-old">R$ 67,00</span>
                                 <span class="price-current">R$ 47,00</span>
                             </div>
-                            <button class="btn btn-primary btn-lg btn-full" onclick="buyEbook('exercicios-alunos')">
+                            <button class="btn btn-primary btn-lg btn-full" onclick="redirectToCheckout('exercicios-alunos')">
                                 <i data-lucide="shopping-cart"></i>
                                 Comprar agora
                             </button>
@@ -781,7 +784,7 @@
                                 <span class="price-old">R$ 127,00</span>
                                 <span class="price-current">R$ 87,00</span>
                             </div>
-                            <button class="btn btn-primary btn-lg btn-full" onclick="buyEbook('documentos-studio')">
+                            <button class="btn btn-primary btn-lg btn-full" onclick="redirectToCheckout('documentos-studio')">
                                 <i data-lucide="shopping-cart"></i>
                                 Comprar agora
                             </button>
@@ -1017,6 +1020,68 @@
             </div>
         </div>
     </footer>
+
+    <!-- Payment Confirmation Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <button class="modal-close" onclick="closePaymentModal()">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2>Confirme sua compra</h2>
+            </div>
+            
+            <div class="modal-body">
+                <div class="order-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Produto:</span>
+                        <span class="summary-value" id="modalProductName">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Preço:</span>
+                        <span class="summary-value" id="modalProductPrice">-</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-item total">
+                        <span class="summary-label">Total:</span>
+                        <span class="summary-value" id="modalTotal">-</span>
+                    </div>
+                </div>
+                
+                <div class="payment-info">
+                    <p class="payment-methods-title">Formas de pagamento disponíveis:</p>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i data-lucide="wallet"></i>
+                            <span>PIX</span>
+                        </div>
+                        <div class="payment-method">
+                            <i data-lucide="credit-card"></i>
+                            <span>Cartão de Crédito</span>
+                        </div>
+                        <div class="payment-method">
+                            <i data-lucide="credit-card"></i>
+                            <span>Cartão de Débito</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="security-badge">
+                    <i data-lucide="shield"></i>
+                    <span>Sua compra é segura e protegida</span>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closePaymentModal()">Cancelar</button>
+                <button class="btn btn-primary" id="confirmPaymentBtn" onclick="proceedToPayment()">
+                    <i data-lucide="check"></i>
+                    Confirmar e Pagar
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="script.js"></script>

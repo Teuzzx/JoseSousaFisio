@@ -1,0 +1,193 @@
+# 📌 MAPA DE NAVEGAÇÃO - LEIA NESTA ORDEM
+
+## 1️⃣ COMECE POR AQUI (5 min)
+```
+🚀_EXECUTE_ISTO.txt
+├─ 3 tarefas simples
+├─ Tempo: 35 minutos
+└─ Pronto para vender!
+```
+
+## 2️⃣ VISÃO GERAL (5 min)
+```
+🎯_COMECE_AQUI.txt
+├─ O que foi feito
+├─ O que você faz
+├─ Checklist
+└─ Links para tudo
+```
+
+## 3️⃣ AÇÃO IMEDIATA (Se quiser ir rápido - 30 min)
+```
+⏱️_PROXIMOS_30_MIN.txt
+├─ Ações para os próximos 30 minutos
+├─ Passo a passo
+└─ Checklist final
+```
+
+## 4️⃣ DETALHES PASSO A PASSO (Se quer mais informações - 60 min)
+```
+TODO_LIST.txt
+├─ PASSO 1: Google Drive Links (5 min)
+├─ PASSO 2: Make.com Setup (15 min)
+├─ PASSO 3: Infinity Pay (10 min)
+├─ Testes (5 min)
+└─ Troubleshooting
+```
+
+## 5️⃣ SETUP MAKE.COM (Detalhado - 20 min)
+```
+MAKE_COM_SETUP.md
+├─ Criar conta
+├─ Webhook
+├─ Gmail
+├─ Emails
+└─ Troubleshooting
+```
+
+## 6️⃣ CONFIG INFINITY PAY (Referência rápida - 5 min)
+```
+INFINITY_PAY_CONFIG.txt
+├─ URLs exatas
+├─ Onde colar
+├─ Exemplos
+└─ Troubleshooting
+```
+
+## 7️⃣ RESUMO RÁPIDO (Cheat sheet - 2 min)
+```
+⚡_RESUMO_VISUAL.txt
+├─ Visual dos componentes
+├─ 3 coisas a fazer
+└─ Custo (R$ 0,00!)
+```
+
+## 8️⃣ RELATÓRIO COMPLETO (Opcional - 10 min)
+```
+📋_RELATORIO_FINAL.txt
+├─ Tudo que foi implementado
+├─ Segurança
+├─ Fluxo completo
+└─ Status final
+```
+
+## 9️⃣ ÍNDICE GERAL (Referência - 5 min)
+```
+INDICE_ARQUIVOS.txt
+├─ Estrutura de pastas
+├─ O que cada arquivo faz
+└─ Checklist final
+```
+
+## 🔟 FLUXO VISUAL (Diagramas - 10 min)
+```
+FLUXO_VISUAL.txt
+├─ Diagrama completo do sistema
+├─ Dados que circulam
+└─ Componentes técnicos
+```
+
+---
+
+## 🎯 POR PERFIL DE USO
+
+### 😎 "Eu sou rápido, só quero ir fazendo"
+```
+1. 🚀_EXECUTE_ISTO.txt (5 min)
+2. Execute as 3 tarefas (30 min)
+3. Teste (5 min)
+4. PRONTO! 💰
+```
+
+### 👨‍💼 "Quero entender o sistema"
+```
+1. 🎯_COMECE_AQUI.txt (5 min)
+2. FLUXO_VISUAL.txt (10 min)
+3. TODO_LIST.txt (30 min)
+4. Teste (5 min)
+5. PRONTO! 💰
+```
+
+### 🤓 "Quero saber TUDO antes de começar"
+```
+1. 🎯_COMECE_AQUI.txt (5 min)
+2. ⚡_RESUMO_VISUAL.txt (5 min)
+3. FLUXO_VISUAL.txt (10 min)
+4. MAKE_COM_SETUP.md (20 min)
+5. TODO_LIST.txt (30 min)
+6. Teste (5 min)
+7. PRONTO! 💰
+```
+
+---
+
+## ✨ ARQUIVOS IMPORTANTES
+
+### Código (CONFIGURE)
+```
+✅ checkout.js
+   └─ Linhas: 10, 16, 22 (Google Drive links)
+   └─ Linha: 168 (Infinity Pay link)
+
+✅ checkout.html
+   └─ Pronto para usar (sem alterações)
+
+✅ payment-success.html
+   └─ Pronto para usar (sem alterações)
+```
+
+### Documentação (LEIA)
+```
+✅ 🚀_EXECUTE_ISTO.txt (COMECE AQUI)
+✅ 🎯_COMECE_AQUI.txt (visão geral)
+✅ TODO_LIST.txt (passo a passo)
+✅ MAKE_COM_SETUP.md (setup Make.com)
+✅ INFINITY_PAY_CONFIG.txt (URLs)
+```
+
+---
+
+## 📊 TEMPO TOTAL
+
+```
+Leitura:         5-30 min (depende do perfil)
+Configuração:    30 min
+Testes:          5 min
+──────────────────────────
+TOTAL:          40-65 min (máximo!)
+```
+
+---
+
+## 🎯 PRÓXIMO PASSO
+
+### Opção 1: Rápida (35 min)
+Abra: 🚀_EXECUTE_ISTO.txt
+
+### Opção 2: Completa (60 min)
+Abra: 🎯_COMECE_AQUI.txt
+
+### Opção 3: Com Calma (90 min)
+Abra: ⏱️_PROXIMOS_30_MIN.txt
+
+---
+
+## ✅ CHECKLIST DE LEITURA
+
+- [ ] Li um dos arquivos acima
+- [ ] Entendi o fluxo
+- [ ] Pronto para configurar
+- [ ] Vou começar AGORA!
+
+---
+
+## 🎉 VOCÊ ESTÁ PRONTO!
+
+Escolha seu caminho e começe!
+
+**Tempo para começar a vender: 1 hora máximo!** ⏱️
+
+---
+
+**Desenvolvido com ❤️ por DUOTECH**
+**26 de Janeiro de 2026**

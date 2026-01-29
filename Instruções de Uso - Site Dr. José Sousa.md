@@ -1,5 +1,39 @@
 # Instruções de Uso - Site Dr. José Sousa
 
+## ⚠️ ATUALIZAÇÃO IMPORTANTE (Janeiro de 2026)
+
+Seu site foi **atualizado com novas funcionalidades profissionais**:
+
+### 🎉 Novas Funcionalidades Adicionadas
+
+1. ✅ **Sistema de Pagamento Infinity Pay**
+   - Modal elegante de confirmação de pedido
+   - Suporte para PIX, Cartão de Crédito e Débito
+   - Leia: `COMO_CONFIGURAR_INFINITY_PAY.md`
+
+2. ✅ **Segurança Aprimorada**
+   - Validação de email e proteção contra XSS
+   - Mensagens de erro claras
+   - Leia: `MELHORIAS.md`
+
+3. ✅ **Animações Dinâmicas**
+   - 6 tipos de animação suave
+   - Sombras profissionais
+   - Hover effects melhorados
+   - Leia: `RESUMO_EXECUTIVO.md`
+
+### 📖 Documentação Recente
+
+**LEIA PRIMEIRO**: `RESUMO_EXECUTIVO.md` (3 min) - Visão geral das melhorias
+
+**Depois**: `COMO_CONFIGURAR_INFINITY_PAY.md` (5 min) - Passo a passo para ativar pagamentos
+
+**Técnico**: `MELHORIAS.md` (10 min) - Detalhes das alterações
+
+---
+
+# Instruções de Uso - Site Dr. José Sousa
+
 ## Funcionalidades Implementadas
 
 ### 1. Seção de Administração e Gestão de Estúdios de Pilates

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ Pagamento Confirmado - Dr. José Sousa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-hex: #1c3460;
+            --primary-glow-hex: #2a4e8c;
+            --success-color: #10b981;
+            --gradient-primary: linear-gradient(135deg, #1c3460, #2a4e8c);
+            --shadow-medium: 0 8px 35px -5px rgba(28, 52, 96, 0.15);
+            --radius: 0.75rem;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .success-wrapper {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .success-icon i {
+            width: 50px;
+            height: 50px;
+            color: var(--success-color);
+        }
+
+        .success-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .success-body {
+            padding: 2.5rem 2rem;
+        }
+
+        .order-info {
+            background: #f5f7fa;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #888;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary-hex);
+        }
+
+        .ebook-access {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success-color);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ebook-access-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-hex);
+            margin-bottom: 1rem;
+        }
+
+        .ebook-access-text {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .access-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .access-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .access-btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(28, 52, 96, 0.3);
+        }
+
+        .access-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(28, 52, 96, 0.4);
+        }
+
+        .access-btn-secondary {
+            background: #f0f0f0;
+            color: var(--primary-hex);
+            border: 2px solid var(--primary-hex);
+        }
+
+        .access-btn-secondary:hover {
+            background: var(--primary-hex);
+            color: white;
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success-color);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .success-message i {
+            width: 24px;
+            height: 24px;
+            color: var(--success-color);
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .success-message-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .success-message-text strong {
+            color: var(--primary-hex);
+        }
+
+        .footer-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.875rem;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: var(--primary-hex);
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            .success-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .success-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .success-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .access-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-wrapper">
+            <!-- Header -->
+            <div class="success-header">
+                <div class="success-icon">
+                    <i data-lucide="check-circle"></i>
+                </div>
+                <h1>Pagamento Confirmado! 🎉</h1>
+                <p>Seu pedido foi processado com sucesso</p>
+            </div>
+
+            <!-- Body -->
+            <div class="success-body">
+                <div class="success-message">
+                    <i data-lucide="info"></i>
+                    <div class="success-message-text">
+                        Um <strong>email de confirmação</strong> foi enviado para você com o link de acesso ao eBook. Verifique sua caixa de entrada e spam.
+                    </div>
+                </div>
+
+                <div class="order-info">
+                    <div class="info-row">
+                        <span class="info-label">Número do Pedido:</span>
+                        <span class="info-value" id="orderId">ORD-000000000</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Produto:</span>
+                        <span class="info-value" id="productName">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Valor:</span>
+                        <span class="info-value" id="amount">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Data:</span>
+                        <span class="info-value" id="date">-</span>
+                    </div>
+                </div>
+
+                <div class="ebook-access">
+                    <div class="ebook-access-title">📚 Acesse seu eBook</div>
+                    <div class="ebook-access-text">
+                        Seu eBook está pronto para download via Google Drive. Clique no botão abaixo para acessar imediatamente.
+                    </div>
+                    <div class="access-buttons">
+                        <a href="#" id="googleDriveLink" class="access-btn access-btn-primary" target="_blank">
+                            <i data-lucide="download"></i>
+                            Acessar eBook
+                        </a>
+                        <a href="index.html" class="access-btn access-btn-secondary">
+                            <i data-lucide="home"></i>
+                            Voltar ao Site
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-actions">
+                    <a href="index.html" class="btn btn-secondary">
+                        <i data-lucide="arrow-left"></i>
+                        Voltar ao Site
+                    </a>
+                    <a href="#" id="downloadReceipt" class="btn btn-primary">
+                        <i data-lucide="file-text"></i>
+                        Recibo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get order ID from URL
+        function getOrderIdFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('orderId');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderId = getOrderIdFromURL();
+
+            if (!orderId) {
+                console.error('Order ID not found');
+                return;
+            }
+
+            // Get order from localStorage
+            const orders = JSON.parse(localStorage.getItem('checkout_orders') || '[]');
+            const order = orders.find(o => o.orderId === orderId);
+
+            if (!order) {
+                console.error('Order not found in localStorage');
+                return;
+            }
+
+            // Populate order information
+            document.getElementById('orderId').textContent = order.orderId;
+            document.getElementById('productName').textContent = order.productName;
+            document.getElementById('amount').textContent = `R$ ${order.price.toFixed(2).replace('.', ',')}`;
+            
+            const date = new Date(order.timestamp);
+            document.getElementById('date').textContent = date.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            // Get product
+            const products = {
+                'pilates-kids': {
+                    googleDriveLink: 'https://drive.google.com/file/d/1234567890/view?usp=sharing'
+                },
+                'exercicios-alunos': {
+                    googleDriveLink: 'https://drive.google.com/file/d/0987654321/view?usp=sharing'
+                },
+                'documentos-studio': {
+                    googleDriveLink: 'https://drive.google.com/file/d/1111111111/view?usp=sharing'
+                }
+            };
+
+            const product = products[order.productId];
+            if (product) {
+                document.getElementById('googleDriveLink').href = product.googleDriveLink;
+            }
+
+            // Download receipt
+            document.getElementById('downloadReceipt').addEventListener('click', (e) => {
+                e.preventDefault();
+                downloadReceipt(order);
+            });
+        });
+
+        // Download receipt as PDF or text
+        function downloadReceipt(order) {
+            const receipt = `
+RECIBO DE COMPRA - Dr. José Sousa
+==================================
+
+Número do Pedido: ${order.orderId}
+Data: ${new Date(order.timestamp).toLocaleDateString('pt-BR')}
+
+DADOS DO CLIENTE
+Cliente: ${order.customerName}
+E-mail: ${order.customerEmail}
+Telefone: ${order.customerPhone}
+
+PRODUTO ADQUIRIDO
+Produto: ${order.productName}
+Valor: R$ ${order.price.toFixed(2).replace('.', ',')}
+
+STATUS: PAGO ✓
+
+Obrigado pela sua compra!
+            `.trim();
+
+            const blob = new Blob([receipt], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `recibo-${order.orderId}.txt`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

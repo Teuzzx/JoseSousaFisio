@@ -1,0 +1,244 @@
+# 🎯 GUIA RÁPIDO - SISTEMA DE CHECKOUT + EMAIL AUTOMÁTICO
+
+## ✅ O QUE FOI ENTREGUE
+
+```
+✅ Página de Checkout Profissional (checkout.html)
+✅ Formulário com validação (nome, email, telefone)
+✅ Página de Sucesso com eBook link (payment-success.html)
+✅ Sistema de envio de emails automático (MAKE.com)
+✅ Redirecionamento seguro Infinity Pay
+✅ Recibo em PDF
+✅ Histórico de pedidos em localStorage
+```
+
+---
+
+## ⚡ 3 COISAS QUE VOCÊ PRECISA FAZER
+
+### 1️⃣ GOOGLE DRIVE LINKS (5 min)
+
+**Arquivo:** checkout.js (linhas 10-15)
+
+Substitua os 3 links:
+
+```javascript
+// Linha 10
+'pilates-kids': {
+    googleDriveLink: 'https://drive.google.com/file/d/1234567890/view?usp=sharing', // ← COLOQUE SEU LINK AQUI
+}
+
+// Linha 16
+'exercicios-alunos': {
+    googleDriveLink: 'https://drive.google.com/file/d/0987654321/view?usp=sharing', // ← COLOQUE SEU LINK AQUI
+}
+
+// Linha 22
+'documentos-studio': {
+    googleDriveLink: 'https://drive.google.com/file/d/1111111111/view?usp=sharing', // ← COLOQUE SEU LINK AQUI
+}
+```
+
+**Como copiar link Google Drive:**
+```
+1. Abra seu arquivo no Google Drive
+2. Clique botão "Compartilhar"
+3. Escolha "Qualquer um com o link" > "Visualizador"
+4. Copie o link (tipo: https://drive.google.com/file/d/abc123/view?usp=sharing)
+5. Cole em checkout.js
+```
+
+---
+
+### 2️⃣ MAKE.COM - EMAIL AUTOMÁTICO (15 min)
+
+**Arquivo:** MAKE_COM_SETUP.md (LEIA TUDO!)
+
+**Resumido:**
+1. Cria conta em make.com (FREE!)
+2. Cria webhook (recebe notificação de pagamento)
+3. Conecta Gmail
+4. Cria 2 templates de email (cliente + você)
+5. Copia webhook URL → cola em Infinity Pay
+
+**Resultado:** Cliente recebe email com link eBook automaticamente!
+
+---
+
+### 3️⃣ INFINITY PAY - CONFIGURAÇÃO (5 min)
+
+**Arquivo:** INFINITY_PAY_CONFIG.txt
+
+**2 Coisas:**
+
+**A) Coloque sua URL de Link de Checkout:**
+
+No checkout.js (linha 168):
+
+```javascript
+const infinityPayLink = 'https://app.infinitypay.io/checkout/SEU-LINK-AQUI'; // ← SUBSTITUA
+```
+
+Como conseguir? Vá em Infinity Pay → Crie seu link customizado → Copie → Cole aqui
+
+**B) Configure Infinity Pay:**
+
+1. Em Infinity Pay, vá em Webhooks
+2. Cole URL do Make.com em "URL do Webhook"
+3. Ative "Redirecionar após pagamento?"
+4. Cole: `https://seu-dominio.com/payment-success.html?orderId={order_id}`
+
+---
+
+## 🧪 TESTANDO TUDO
+
+```
+1. Clique "Comprar agora" em qualquer eBook
+2. Preencha formulário:
+   Nome: João Silva
+   Email: seu-email-test@gmail.com
+   Telefone: (89) 99999-9999
+3. Marque "Concordo"
+4. Clique "Pagar com Infinity Pay"
+5. Simule um pagamento
+6. Deve ver página "Obrigado pela Compra!" ✅
+7. Deve receber email em seu-email-test@gmail.com ✅
+8. Email deve ter link pro eBook ✅
+9. Clique link → Google Drive abre ✅
+```
+
+---
+
+## 📋 FLUXO COMPLETO
+
+```
+CLIENTE:
+Clica "Comprar Agora"
+    ↓
+Preencheformulário (nome, email, tel)
+    ↓
+Clica "Pagar com Infinity Pay"
+    ↓
+Infinity Pay abre
+    ↓
+Confirma pagamento
+    ↓
+MAKE.com recebe notificação 🔔
+    ↓
+MAKE.com envia EMAIL pro cliente 📧
+    ↓
+Cliente redirecionado pra "Obrigado!" 🎉
+    ↓
+Cliente clica link no email
+    ↓
+Acessa eBook no Google Drive ✅
+
+VOCÊ:
+Recebe EMAIL de notificação de venda 💰
+com dados do cliente
+```
+
+---
+
+## 📁 ARQUIVOS CRIADOS
+
+**Código:**
+- ✅ checkout.html - Página de checkout
+- ✅ checkout.js - Lógica (CONFIGURE GOOGLE DRIVE + INFINITY PAY)
+- ✅ payment-success.html - Página de sucesso
+
+**Documentação:**
+- ✅ MAKE_COM_SETUP.md - Guia Make.com passo a passo
+- ✅ INFINITY_PAY_CONFIG.txt - URLs de configuração
+- ✅ CHECKOUT_RESUMO.txt - Resumo geral
+- ✅ MAKE_COM_SETUP.md - Este arquivo
+
+---
+
+## ⚠️ CHECKLIST FINAL
+
+### Setup
+- [ ] Copiei 3 links do Google Drive
+- [ ] Colei links em checkout.js (linhas 10, 16, 22)
+- [ ] Criei conta no Make.com
+- [ ] Criei webhook no Make.com (copiei URL)
+- [ ] Conectei Gmail no Make.com
+- [ ] Criei 2 templates de email (cliente + você)
+- [ ] Colei webhook URL em Infinity Pay
+- [ ] Ativei "Redirecionar após pagamento?" em Infinity Pay
+- [ ] Colei URL de redirecionamento em Infinity Pay
+- [ ] Colei meu link Infinity Pay em checkout.js
+
+### Testes
+- [ ] Cliquei "Comprar" → checkout abriu
+- [ ] Preenchi formulário → sem erros
+- [ ] Cliquei "Pagar" → redirecionou Infinity Pay
+- [ ] Simulei pagamento → sucesso page abriu
+- [ ] Recebi email em test@gmail.com
+- [ ] Cliquei link email → Google Drive abriu
+- [ ] Recebi notificação em meu email
+- [ ] Tudo funcionando! 🚀
+
+---
+
+## 🆘 TROUBLESHOOTING
+
+### Cliente não redireciona pra success page?
+```
+✓ Verifique URL em Infinity Pay (sem typos)
+✓ Formato correto: https://seu-dominio.com/payment-success.html?orderId={order_id}
+✓ Infinity Pay tem "Redirecionar após pagamento?" ativado?
+```
+
+### Email não chegou?
+```
+✓ Make.com scenario está "ON"?
+✓ Gmail está autorizado?
+✓ Verifique spam/lixo
+✓ No Make.com, clique "History" pra ver erro
+```
+
+### Webhook não foi acionado?
+```
+✓ URL do Make.com está colada certa em Infinity Pay?
+✓ Eventos "payment.confirmed" está marcado?
+✓ Faça um teste real (não simulado)
+✓ Verifique "History" no Make.com
+```
+
+---
+
+## 🎯 PRÓXIMAS AÇÕES
+
+```
+HOJE (15 min):
+1. Configure Google Drive links ✓
+2. Setup Make.com ✓
+3. Configure Infinity Pay ✓
+
+ESTA SEMANA:
+1. Faça teste completo
+2. Verifique todos os emails
+3. Se OK → liberar pra clientes!
+```
+
+---
+
+## 🚀 ESTÁ TUDO PRONTO!
+
+Você tem um sistema profissional de:
+- ✅ Checkout elegante
+- ✅ Coleta de dados segura
+- ✅ Emails automáticos
+- ✅ Entrega de eBook via Google Drive
+- ✅ Página de sucesso bonita
+- ✅ Recibo em PDF
+- ✅ Histórico de vendas
+
+**Tudo grátis (MAKE.com é 100% free)!**
+
+---
+
+**Desenvolvido com ❤️ por DUOTECH**
+Data: 26 de Janeiro de 2026
+Status: ✅ PRONTO PARA CONFIGURAR E USAR

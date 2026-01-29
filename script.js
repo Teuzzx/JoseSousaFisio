@@ -332,13 +332,65 @@ function goToSlide(carouselType, slideIndex) {
 }
 
 // Form handling
+function sanitizeInput(input) {
+    // Remove potentially dangerous characters and HTML tags
+    const tempDiv = document.createElement('div');
+    tempDiv.textContent = input;
+    return tempDiv.innerHTML;
+}
+
+function validateEmail(email) {
+    // RFC 5322 simplified regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validateForm(name, email, message) {
+    if (!name || name.trim().length === 0) {
+        alert('Por favor, preencha seu nome completo.');
+        return false;
+    }
+    
+    if (name.length < 3 || name.length > 100) {
+        alert('O nome deve ter entre 3 e 100 caracteres.');
+        return false;
+    }
+    
+    if (!email || !validateEmail(email)) {
+        alert('Por favor, preencha um e-mail válido.');
+        return false;
+    }
+    
+    if (!message || message.trim().length === 0) {
+        alert('Por favor, preencha a mensagem.');
+        return false;
+    }
+    
+    if (message.length < 10 || message.length > 1000) {
+        alert('A mensagem deve ter entre 10 e 1000 caracteres.');
+        return false;
+    }
+    
+    return true;
+}
+
 function handleFormSubmit(event) {
     event.preventDefault();
     
     const formData = new FormData(event.target);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
+    let name = formData.get('name');
+    let email = formData.get('email');
+    let message = formData.get('message');
+    
+    // Sanitize inputs
+    name = sanitizeInput(name);
+    email = sanitizeInput(email);
+    message = sanitizeInput(message);
+    
+    // Validate form
+    if (!validateForm(name, email, message)) {
+        return;
+    }
     
     const whatsappMessage = `Olá Dr. José! 
 
@@ -349,6 +401,9 @@ Mensagem: ${message}`;
 
     const whatsappUrl = `https://wa.me/5589994584100?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
+    
+    // Reset form after successful submission
+    event.target.reset();
 }
 
 // Intersection Observer for animations
@@ -531,12 +586,34 @@ function handleNewsletterSubmit(event) {
     event.preventDefault();
     
     const formData = new FormData(event.target);
-    const email = formData.get('email');
+    let email = formData.get('email');
+    
+    // Sanitize and validate email
+    email = sanitizeInput(email);
+    
+    if (!validateEmail(email)) {
+        alert('Por favor, preencha um e-mail válido.');
+        event.target.reset();
+        return;
+    }
+    
+    // Store subscriber in localStorage
+    const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+    
+    // Check if email already subscribed
+    if (subscribers.includes(email)) {
+        alert('Este e-mail já está inscrito em nossa newsletter!');
+        event.target.reset();
+        return;
+    }
+    
+    subscribers.push(email);
+    localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
     
     // Simulate newsletter subscription
     // In production, you would integrate with an email service like Mailchimp, ConvertKit, etc.
     
-    // For now, we'll use a simple alert and WhatsApp notification
+    // Show success message
     alert('Obrigado por se inscrever! Você receberá nossas novidades em breve.');
     
     // Send notification via WhatsApp
@@ -783,4 +860,150 @@ window.openMentoriaWhatsApp = openMentoriaWhatsApp;
 window.buyEbook = buyEbook;
 window.handleNewsletterSubmit = handleNewsletterSubmit;
 window.emailAutomation = emailAutomation;
+
+// ===== PAYMENT SYSTEM INFINITY PAY =====
+
+// Store current payment data
+let currentPaymentData = {
+    productId: '',
+    productName: '',
+    price: 0
+};
+
+/**
+ * Opens the payment confirmation modal
+ * @param {string} productId - The product identifier
+ * @param {string} productName - The product name
+ * @param {number} price - The product price in BRL
+ */
+function openPaymentConfirmation(productId, productName, price) {
+    currentPaymentData = {
+        productId: productId,
+        productName: productName,
+        price: price
+    };
+    
+    // Update modal content
+    document.getElementById('modalProductName').textContent = productName;
+    document.getElementById('modalProductPrice').textContent = `R$ ${price.toFixed(2).replace('.', ',')}`;
+    document.getElementById('modalTotal').textContent = `R$ ${price.toFixed(2).replace('.', ',')}`;
+    
+    // Show modal with animation
+    const modal = document.getElementById('paymentModal');
+    modal.classList.add('active');
+    
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes the payment confirmation modal
+ */
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    modal.classList.remove('active');
+    
+    // Re-enable body scroll
+    document.body.style.overflow = 'auto';
+}
+
+/**
+ * Proceeds to Infinity Pay payment
+ * Updates payment data and redirects to Infinity Pay external link
+ */
+function proceedToPayment() {
+    const { productId, productName, price } = currentPaymentData;
+    
+    // Validate payment data
+    if (!productId || !productName || price <= 0) {
+        alert('Erro ao processar pagamento. Por favor, tente novamente.');
+        return;
+    }
+    
+    // Store order in localStorage for reference
+    const order = {
+        orderId: `ORD-${Date.now()}`,
+        productId: productId,
+        productName: productName,
+        price: price,
+        timestamp: new Date().toISOString(),
+        status: 'pending'
+    };
+    
+    // Save order to localStorage
+    let orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    
+    // Close modal
+    closePaymentModal();
+    
+    // Show processing message
+    const confirmBtn = document.getElementById('confirmPaymentBtn');
+    const originalText = confirmBtn.innerHTML;
+    confirmBtn.innerHTML = '<i data-lucide="loader"></i> Redirecionando...';
+    confirmBtn.disabled = true;
+    
+    // Simulate a brief delay for better UX
+    setTimeout(() => {
+        // Redirect to Infinity Pay
+        // NOTE: Replace this URL with your actual Infinity Pay link
+        // The link should be configured to accept the price and product information
+        const infinityPayLink = `https://infinitypay.io/checkout?amount=${price}&description=${encodeURIComponent(productName)}&orderId=${order.orderId}`;
+        
+        // Alternative: If you have a specific Infinity Pay merchant link, use it directly
+        // const infinityPayLink = 'https://your-infinity-pay-link-here.com';
+        
+        window.open(infinityPayLink, '_blank');
+        
+        // Reset button
+        confirmBtn.innerHTML = originalText;
+        confirmBtn.disabled = false;
+        
+        // Reinitialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }, 800);
+}
+
+/**
+ * Close modal when pressing Escape key
+ */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('paymentModal');
+        if (modal && modal.classList.contains('active')) {
+            closePaymentModal();
+        }
+    }
+});
+
+/**
+ * Close modal when clicking outside of it
+ */
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('paymentModal');
+    if (e.target === modal) {
+        closePaymentModal();
+    }
+});
+
+// Export payment functions for global access
+window.openPaymentConfirmation = openPaymentConfirmation;
+window.closePaymentModal = closePaymentModal;
+window.proceedToPayment = proceedToPayment;
+
+// ===== CHECKOUT REDIRECTION =====
+
+/**
+ * Redirect to checkout page
+ * @param {string} productId - The product identifier
+ */
+function redirectToCheckout(productId) {
+    window.location.href = `checkout.html?product=${productId}`;
+}
+
+// Export checkout function
+window.redirectToCheckout = redirectToCheckout;
 

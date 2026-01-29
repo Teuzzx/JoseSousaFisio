@@ -1,0 +1,532 @@
+<!-- 
+    SEÇÕES EXTRAS PROFISSIONAIS E DINÂMICAS
+    Cole estas seções no seu HTML para deixar o site ainda mais completo
+    Escolha as que melhor se encaixam no seu projeto
+-->
+
+<!-- ========================================
+    1. SEÇÃO: ESPECIALIDADES COM ÍCONES
+    ======================================== -->
+<section id="especialidades" class="especialidades section-gradient">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span style="color: white;">Minhas</span> <span style="color: rgba(255,255,255,0.9);">Especialidades</span>
+            </h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">
+                Ampla experiência em diferentes modalidades e tratamentos com o Método Pilates
+            </p>
+        </div>
+
+        <div class="especialidades-grid">
+            <div class="specialty-card">
+                <div class="specialty-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Pilates Clássico</h3>
+                <p>Método original de Joseph Pilates com todas as suas técnicas e princípios fundamentais</p>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-check-circle"></i> Mat Pilates</li>
+                    <li><i class="fas fa-check-circle"></i> Aparelhos</li>
+                    <li><i class="fas fa-check-circle"></i> Acessórios</li>
+                </ul>
+            </div>
+
+            <div class="specialty-card">
+                <div class="specialty-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>Pilates Kids</h3>
+                <p>Especializado em crianças, desenvolvendo força, postura e consciência corporal desde cedo</p>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-check-circle"></i> 4-8 anos</li>
+                    <li><i class="fas fa-check-circle"></i> 9-12 anos</li>
+                    <li><i class="fas fa-check-circle"></i> Correção postural</li>
+                </ul>
+            </div>
+
+            <div class="specialty-card">
+                <div class="specialty-icon">
+                    <i class="fas fa-female"></i>
+                </div>
+                <h3>Pilates Gestantes</h3>
+                <p>Programa seguro para grávidas, fortalecendo core e preparando para o parto</p>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-check-circle"></i> Reabilitação pós-parto</li>
+                    <li><i class="fas fa-check-circle"></i> Prevenção de diastase</li>
+                    <li><i class="fas fa-check-circle"></i> Alívio de dores</li>
+                </ul>
+            </div>
+
+            <div class="specialty-card">
+                <div class="specialty-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Pilates Terapêutico</h3>
+                <p>Reabilitação e tratamento de lesões com exercícios específicos e adaptados</p>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-check-circle"></i> Dores coluna</li>
+                    <li><i class="fas fa-check-circle"></i> Lesões articulares</li>
+                    <li><i class="fas fa-check-circle"></i> Recuperação pós-cirurgias</li>
+                </ul>
+            </div>
+
+            <div class="specialty-card">
+                <div class="specialty-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Pilates Aéreo</h3>
+                <p>Prática na rede suspensa, aumentando desafio e trabalhando equilíbrio e força</p>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-check-circle"></i> Maior estímulo muscular</li>
+                    <li><i class="fas fa-check-circle"></i> Diversão e desafio</li>
+                    <li><i class="fas fa-check-circle"></i> Resultados acelerados</li>
+                </ul>
+            </div>
+
+            <div class="specialty-card">
+                <div class="specialty-icon">
+                    <i class="fas fa-person-hiking"></i>
+                </div>
+                <h3>Pilates Funcional</h3>
+                <p>Trabalho integrado para melhorar movimentos do dia a dia e performance atlética</p>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-check-circle"></i> Atletas</li>
+                    <li><i class="fas fa-check-circle"></i> Idosos</li>
+                    <li><i class="fas fa-check-circle"></i> Reabilitação</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.especialidades {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--primary-hex) 0%, var(--primary-glow-hex) 100%);
+}
+
+.especialidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.specialty-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.specialty-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.specialty-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-hex), var(--primary-glow-hex));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.specialty-card:hover .specialty-icon {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow: 0 15px 40px rgba(28, 52, 96, 0.4);
+}
+
+.specialty-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+}
+
+.specialty-list {
+    list-style: none;
+    text-align: left;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(28, 52, 96, 0.1);
+}
+
+.specialty-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--muted-foreground-hex);
+    font-size: 0.95rem;
+}
+
+.specialty-list i {
+    color: var(--primary-hex);
+}
+</style>
+
+<!-- ========================================
+    2. SEÇÃO: DIFERENCIAIS COM ABAS
+    ======================================== -->
+<section id="diferenciais" class="diferenciais">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                O Que Nos <span class="text-highlight">Diferencia</span>
+            </h2>
+            <p class="section-subtitle">
+                Conheça o que torna nossos serviços únicos e de qualidade superior
+            </p>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tabs-buttons">
+                <button class="tab-btn active" onclick="switchTab(event, 'tab1')">
+                    <i class="fas fa-star"></i>
+                    Qualidade
+                </button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab2')">
+                    <i class="fas fa-graduation-cap"></i>
+                    Formação
+                </button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab3')">
+                    <i class="fas fa-chart-line"></i>
+                    Resultados
+                </button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab4')">
+                    <i class="fas fa-heart"></i>
+                    Cuidado
+                </button>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tab-content active" id="tab1">
+                    <div class="tab-content-inner">
+                        <div class="tab-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Qualidade Premium</h3>
+                        <p>Equipamentos de última geração, ambiente climatizado e profissional certificado com experiência comprovada.</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check"></i> Equipamentos importados</li>
+                            <li><i class="fas fa-check"></i> Ambiente higienizado</li>
+                            <li><i class="fas fa-check"></i> Profissional certificado</li>
+                            <li><i class="fas fa-check"></i> Protocolos rigorosos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab2">
+                    <div class="tab-content-inner">
+                        <div class="tab-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Formação Continuada</h3>
+                        <p>Constantemente atualizado com as melhores práticas, estudando com mestres internacionais.</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check"></i> Cursos internacionais</li>
+                            <li><i class="fas fa-check"></i> Especialização contínua</li>
+                            <li><i class="fas fa-check"></i> Metodologia científica</li>
+                            <li><i class="fas fa-check"></i> Inovação constante</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab3">
+                    <div class="tab-content-inner">
+                        <div class="tab-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Resultados Comprovados</h3>
+                        <p>Mais de 10 mil atendimentos com taxa de satisfação superior a 95%.</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check"></i> 10+ mil atendimentos</li>
+                            <li><i class="fas fa-check"></i> 95% satisfação</li>
+                            <li><i class="fas fa-check"></i> Resultados mensuráveis</li>
+                            <li><i class="fas fa-check"></i> Transformações reais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab4">
+                    <div class="tab-content-inner">
+                        <div class="tab-icon">
+                            <i class="fas fa-hands-holding"></i>
+                        </div>
+                        <h3>Cuidado Personalizado</h3>
+                        <p>Cada paciente é único. Desenvolvimento de programas 100% customizados para suas necessidades.</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check"></i> Avaliação completa</li>
+                            <li><i class="fas fa-check"></i> Programa personalizado</li>
+                            <li><i class="fas fa-check"></i> Acompanhamento close</li>
+                            <li><i class="fas fa-check"></i> Suporte contínuo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.diferenciais {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+}
+
+.tabs-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tabs-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--muted-foreground-hex);
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-hex);
+    color: var(--primary-hex);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--primary-hex), var(--primary-glow-hex));
+    color: white;
+    border-color: var(--primary-hex);
+    transform: scale(1.05);
+}
+
+.tab-btn i {
+    font-size: 1.5rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.tab-content-inner {
+    background: white;
+    border-radius: var(--radius);
+    padding: 3rem;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+}
+
+.tab-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-hex), var(--primary-glow-hex));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.benefit-list {
+    list-style: none;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.benefit-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted-foreground-hex);
+}
+
+.benefit-list i {
+    color: var(--primary-hex);
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .tab-content-inner {
+        padding: 2rem;
+    }
+    
+    .benefit-list {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<!-- ========================================
+    3. SEÇÃO: ESTATÍSTICAS COM NÚMEROS ANIMADOS
+    ======================================== -->
+<section id="estatisticas" class="estatisticas">
+    <div class="container">
+        <h2 class="section-title">
+            Números que Falam por Si <span class="text-highlight">Sós</span>
+        </h2>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value"><span class="stat-number">10+</span></div>
+                <div class="stat-label">Mil Atendimentos</div>
+                <div class="stat-description">Pacientes transformados com sucesso</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-value"><span class="stat-number">100+</span></div>
+                <div class="stat-label">Profissionais Formados</div>
+                <div class="stat-description">Educando novos instrutores de Pilates</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-value"><span class="stat-number">95%</span></div>
+                <div class="stat-label">Taxa de Satisfação</div>
+                <div class="stat-description">Clientes altamente satisfeitos</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-value"><span class="stat-number">8+</span></div>
+                <div class="stat-label">Anos de Experiência</div>
+                <div class="stat-description">Trajetória sólida e diferenciada</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.estatisticas {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--primary-hex) 0%, var(--primary-glow-hex) 100%);
+}
+
+.estatisticas .section-title {
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
+    margin-bottom: 1rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-hex), var(--primary-glow-hex));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+}
+
+.stat-description {
+    font-size: 0.9rem;
+    color: var(--muted-foreground-hex);
+}
+</style>
+
+<!-- ========================================
+    4. JAVASCRIPT PARA ABAS
+    ======================================== -->
+<script>
+function switchTab(event, tabId) {
+    event.preventDefault();
+    
+    // Remove active de todos os botões
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Remove active de todo conteúdo
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Adiciona active no botão clicado
+    event.target.closest('.tab-btn').classList.add('active');
+    
+    // Adiciona active no conteúdo correspondente
+    document.getElementById(tabId).classList.add('active');
+}
+</script>
+
+<!-- ========================================
+    INSTRUÇÕES DE USO
+    ======================================== -->
+<!--
+Para usar essas seções, copie e cole no seu index.html:
+
+1. ESPECIALIDADES:
+   - Ótima para detalhar serviços
+   - Cards com ícones e listas
+   - Funciona bem em mobile
+
+2. DIFERENCIAIS:
+   - Sistema de abas interativo
+   - Explica o que torna único
+   - Professinal e dinâmico
+
+3. ESTATÍSTICAS:
+   - Números animados
+   - Builds confiança
+   - Responsivo e bonito
+
+Customize cores e texto conforme necessário!
+-->
