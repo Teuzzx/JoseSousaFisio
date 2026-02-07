@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d5a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a5f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#heroBg)"/>
+  <rect x="100" y="80" width="400" height="240" fill="#c9a227" rx="16" opacity="0.3"/>
+  <g transform="translate(300,150)">
+    <circle cx="0" cy="-40" r="50" fill="#c9a227"/>
+    <path d="M -50 20 L -30 80 M 50 20 L 30 80 M -30 20 L -30 60 M 30 20 L 30 60" stroke="#c9a227" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <rect x="80" y="350" width="440" height="30" fill="#c9a227" opacity="0.5" rx="4"/>
+  <text x="300" y="370" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">Consultório de Fisioterapia Moderno</text>
+</svg>

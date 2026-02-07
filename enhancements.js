@@ -1,363 +1,259 @@
 /**
- * Enhancements para melhorar experiência visual e dinâmica do site
- * Animações, efeitos visuais e otimizações de interação
+ * Dr. José Sousa - Fisioterapeuta
+ * Enhancements Visuais - Versão Moderna 2025
+ * Efeitos visuais e otimizações de interação
  */
 
-// ===== ANIMAÇÕES DE ENTRADA =====
+// ============================================
+// CONFIGURAÇÕES
+// ============================================
 
-/**
- * Observador para animar elementos quando entram na viewport
- */
-function initIntersectionObserver() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
+const ENHANCEMENT_CONFIG = {
+    parallaxIntensity: 0.3,
+    mouseGlowIntensity: 0.15,
+    animationThreshold: 0.1,
+    reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+};
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (ENHANCEMENT_CONFIG.reducedMotion) return;
+    
+    initParallaxEffects();
+    initMagneticButtons();
+    initNumberCounter();
+    initGradientShift();
+    initSmoothHover();
+});
+
+// ============================================
+// PARALLAX EFFECTS
+// ============================================
+
+function initParallaxEffects() {
+    const parallaxElements = document.querySelectorAll('.hero-image-wrapper, .about-image');
+    
+    let ticking = false;
+    
+    const handleScroll = () => {
+        const scrollY = window.pageYOffset;
+        
+        parallaxElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const elementTop = rect.top + scrollY;
+            const distance = scrollY - elementTop;
+            
+            if (scrollY + window.innerHeight > elementTop && scrollY < elementTop + rect.height) {
+                const speed = el.classList.contains('hero-image-wrapper') ? 0.3 : 0.1;
+                el.style.transform = `translateY(${distance * speed}px)`;
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Observar elementos com classe animável
-    const animateElements = document.querySelectorAll(
-        '.service-card, .ebook-card, .feature-card, .stat-card, .testimonial-card, .guarantee-card'
-    );
-
-    animateElements.forEach(el => {
-        observer.observe(el);
-    });
+        
+        ticking = false;
+    };
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
-// ===== EFEITOS DE MOUSE =====
+// ============================================
+// MAGNETIC BUTTONS
+// ============================================
 
-/**
- * Adicionar efeito de luz ao passar o mouse em cards
- */
-function initMouseGlow() {
-    const cards = document.querySelectorAll('.service-card, .ebook-card, .feature-card');
-
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const glowElement = document.createElement('div');
-            glowElement.style.cssText = `
-                position: absolute;
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
-                pointer-events: none;
-                left: ${x}px;
-                top: ${y}px;
-                transform: translate(-50%, -50%);
-                border-radius: 50%;
-                z-index: 1;
-            `;
-
-            card.appendChild(glowElement);
-
-            setTimeout(() => glowElement.remove(), 300);
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.btn-primary, .service-btn');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
         });
     });
 }
 
-// ===== CONTADOR ANIMADO =====
+// ============================================
+// ANIMATED NUMBER COUNTER
+// ============================================
 
-/**
- * Animar números quando entram em viewport
- */
-function animateNumbers() {
-    const stats = document.querySelectorAll('.stat-number, .proof-number');
-
+function initNumberCounter() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.dataset.animated) {
-                const finalValue = parseInt(entry.target.textContent);
-                const startValue = 0;
-                const duration = 2000;
-                const increment = finalValue / (duration / 50);
-                let current = startValue;
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= finalValue) {
-                        entry.target.textContent = finalValue;
-                        clearInterval(timer);
-                        entry.target.dataset.animated = 'true';
-                    } else {
-                        entry.target.textContent = Math.floor(current);
-                    }
-                }, 50);
+            if (entry.isIntersecting && !entry.target.dataset.counted) {
+                animateNumber(entry.target);
+                entry.target.dataset.counted = 'true';
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
-
-    stats.forEach(stat => observer.observe(stat));
+    
+    statNumbers.forEach(num => observer.observe(num));
 }
 
-// ===== TIPOGRAFIA DINÂMICA =====
-
-/**
- * Efeito de digitação para textos especiais
- */
-function initTypewriterEffect() {
-    const elements = document.querySelectorAll('[data-typewriter]');
-
-    elements.forEach(el => {
-        const text = el.textContent;
-        el.textContent = '';
-
-        let index = 0;
-        const speed = parseInt(el.dataset.typewriter) || 50;
-
-        const type = () => {
-            if (index < text.length) {
-                el.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, speed);
-            }
-        };
-
-        // Iniciar quando visível
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && index === 0) {
-                type();
-                observer.unobserve(el);
-            }
-        });
-
-        observer.observe(el);
-    });
+function animateNumber(element) {
+    const text = element.textContent;
+    const hasPlus = text.includes('+');
+    const hasText = text.replace(/[0-9+]/g, '').trim();
+    const finalNumber = parseInt(text.replace(/\D/g, ''));
+    
+    let current = 0;
+    const duration = 2000;
+    const increment = finalNumber / (duration / 16);
+    
+    const updateNumber = () => {
+        current += increment;
+        
+        if (current >= finalNumber) {
+            element.textContent = `${hasPlus ? '+' : ''}${finalNumber}${hasText ? hasText : ''}`;
+        } else {
+            element.textContent = `${hasPlus ? '+' : ''}${Math.floor(current)}${hasText ? hasText : ''}`;
+            requestAnimationFrame(updateNumber);
+        }
+    };
+    
+    requestAnimationFrame(updateNumber);
 }
 
-// ===== SCROLL PARALLAX =====
+// ============================================
+// GRADIENT SHIFT EFFECT
+// ============================================
 
-/**
- * Efeito parallax em scroll para elementos com data-parallax
- */
-function initParallax() {
-    const elements = document.querySelectorAll('[data-parallax]');
-
-    if (elements.length === 0) return;
-
-    window.addEventListener('scroll', () => {
-        elements.forEach(el => {
-            const scrollPosition = window.pageYOffset;
-            const elementPosition = el.offsetTop;
-            const elementHeight = el.offsetHeight;
-            const windowHeight = window.innerHeight;
-
-            if (scrollPosition + windowHeight > elementPosition) {
-                const offset = (scrollPosition - elementPosition + windowHeight) * 0.3;
-                el.style.transform = `translateY(${offset}px)`;
-            }
-        });
-    });
+function initGradientShift() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+    
+    const animate = () => {
+        currentX += (mouseX - currentX) * 0.05;
+        currentY += (mouseY - currentY) * 0.05;
+        
+        const gradientX = 50 + currentX * 10;
+        const gradientY = 50 + currentY * 10;
+        
+        hero.style.setProperty('--gradient-position', `${gradientX}% ${gradientY}%`);
+        
+        requestAnimationFrame(animate);
+    };
+    
+    animate();
 }
 
-// ===== LOADING STATES =====
+// ============================================
+// SMOOTH HOVER EFFECTS
+// ============================================
 
-/**
- * Adicionar efeito de loading em botões
- */
-function initButtonLoadingStates() {
+function initSmoothHover() {
+    // Add ripple effect to buttons
     const buttons = document.querySelectorAll('.btn');
-
+    
     buttons.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            if (this.dataset.loading === 'true') {
-                return;
-            }
-
-            // Adicionar classe de loading
-            const originalHTML = this.innerHTML;
-            const originalWidth = this.offsetWidth;
-
-            this.style.width = originalWidth + 'px';
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
-            this.dataset.loading = 'true';
-            this.disabled = true;
-
-            // Remover loading após 2 segundos (se não foi redirecionado)
-            setTimeout(() => {
-                if (this.dataset.loading === 'true') {
-                    this.innerHTML = originalHTML;
-                    this.dataset.loading = 'false';
-                    this.disabled = false;
-                    this.style.width = 'auto';
-                }
-            }, 2000);
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                background: rgba(255,255,255,0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+                left: ${x}px;
+                top: ${y}px;
+                width: 100px;
+                height: 100px;
+                margin-left: -50px;
+                margin-top: -50px;
+            `;
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
         });
     });
 }
 
-// ===== EFEITOS DE HOVER EM ÍCONES =====
+// ============================================
+// CSS ANIMATIONS (injected)
+// ============================================
 
-/**
- * Adicionar efeitos dinâmicos em ícones
- */
-function initIconEffects() {
-    const icons = document.querySelectorAll('.service-icon i, .feature-icon i, .proof-icon i');
-
-    icons.forEach(icon => {
-        icon.addEventListener('mouseenter', function() {
-            this.style.animation = 'bounce 0.6s ease-in-out infinite';
-        });
-
-        icon.addEventListener('mouseleave', function() {
-            this.style.animation = 'none';
-        });
-    });
-}
-
-// ===== SCROLL REVEAL =====
-
-/**
- * Revelar elementos durante scroll
- */
-function initScrollReveal() {
-    const reveals = document.querySelectorAll('[data-reveal]');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    reveals.forEach(el => observer.observe(el));
-}
-
-// ===== DARK MODE TOGGLE =====
-
-/**
- * Toggle dark mode (opcional)
- */
-function initDarkModeToggle() {
-    const button = document.getElementById('darkModeToggle');
-    if (!button) return;
-
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
     }
-
-    button.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDark);
-    });
-}
-
-// ===== SMOOTH SCROLL POLYFILL =====
-
-/**
- * Melhorar smooth scroll
- */
-function initEnhancedSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-// ===== LAZY LOADING IMAGES =====
-
-/**
- * Lazy load de imagens para melhor performance
- */
-function initLazyLoadImages() {
-    if ('IntersectionObserver' in window) {
-        const images = document.querySelectorAll('img[data-src]');
-        
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
+    
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
-}
-
-// ===== PERFORMANCE MONITORING =====
-
-/**
- * Monitor performance e exibir métricas (desenvolvimento)
- */
-function initPerformanceMonitoring() {
-    if (window.location.search.includes('debug')) {
-        window.addEventListener('load', () => {
-            const perfData = window.performance.timing;
-            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-            console.log(`⏱️ Tempo de carregamento: ${pageLoadTime}ms`);
-
-            // Core Web Vitals
-            if ('web-vital' in window) {
-                console.log('✅ Web Vitals disponíveis');
-            }
-        });
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
     }
-}
-
-// ===== INICIALIZAR TUDO =====
-
-/**
- * Função para inicializar todos os enhancements
- */
-function initAllEnhancements() {
-    // Aguardar DOM estar completamente carregado
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            initIntersectionObserver();
-            animateNumbers();
-            initTypewriterEffect();
-            initParallax();
-            initButtonLoadingStates();
-            initIconEffects();
-            initScrollReveal();
-            initDarkModeToggle();
-            initEnhancedSmoothScroll();
-            initLazyLoadImages();
-            initPerformanceMonitoring();
-        });
-    } else {
-        initIntersectionObserver();
-        animateNumbers();
-        initTypewriterEffect();
-        initParallax();
-        initButtonLoadingStates();
-        initIconEffects();
-        initScrollReveal();
-        initDarkModeToggle();
-        initEnhancedSmoothScroll();
-        initLazyLoadImages();
-        initPerformanceMonitoring();
+    
+    .hero::before {
+        background-position: var(--gradient-position, 50% 50%);
+        transition: background-position 0.3s ease;
     }
-}
+    
+    .stat-number {
+        font-variant-numeric: tabular-nums;
+    }
+`;
+document.head.appendChild(style);
 
-// Executar ao carregar script
-initAllEnhancements();
+// ============================================
+// EXPORT
+// ============================================
 
-// Exportar para uso global
-window.initAllEnhancements = initAllEnhancements;
+window.Enhancements = {
+    config: ENHANCEMENT_CONFIG,
+    initParallax: initParallaxEffects,
+    initMagnetic: initMagneticButtons,
+    initCounter: initNumberCounter
+};
