@@ -1,0 +1,130 @@
+# 🎯 EXECUTE ISTO AGORA!
+
+## SEM COMPLICAÇÃO. SIMPLES.
+
+---
+
+## ✅ TAREFA 1: GOOGLE DRIVE LINKS
+
+```
+1. Abra Google Drive
+2. Upload dos 3 eBooks
+3. Para cada um:
+   → Clique "Compartilhar"
+   → Marque "Qualquer um com o link"
+   → Copie o link
+4. Abra checkout.js
+5. Procure por: googleDriveLink
+6. Cole os 3 links nas linhas:
+   - Linha 10: Pilates Kids
+   - Linha 16: Exercícios
+   - Linha 22: Documentos
+7. Salve (Ctrl+S)
+```
+
+**Tempo: 5 minutos**
+
+---
+
+## ✅ TAREFA 2: MAKE.COM
+
+```
+1. Acesse: https://make.com
+2. Clique "Sign up free"
+3. Cadastre-se (email + senha)
+4. Confirme email no Gmail
+5. Crie novo "Scenario"
+6. Adicione "Custom Webhook"
+7. Copy webhook URL (salve em bloco de notas!)
+8. Adicione "Gmail" → "Send Email"
+9. Crie 2 templates de email:
+   - Email cliente (com {{2.googleDriveLink}})
+   - Email dono (com dados de venda)
+10. Ative o scenario (botão "ON")
+```
+
+**Tempo: 15 minutos**
+**Guia completo:** MAKE_COM_SETUP.md
+
+---
+
+## ✅ TAREFA 3: INFINITY PAY
+
+```
+1. Abra painel Infinity Pay
+2. Crie seu link de checkout (copie)
+3. Abra checkout.js
+4. Linha 168: Cole seu link Infinity Pay
+5. Salve
+6. De volta ao Infinity Pay
+7. Webhooks → Cole URL do Make.com
+8. Marque evento: "payment.confirmed"
+9. Salve
+10. Redirecionar após pagamento → ATIVE
+11. URL: https://seu-dominio.com/payment-success.html?orderId={order_id}
+12. Salve
+```
+
+**Tempo: 10 minutos**
+
+---
+
+## ✅ PRONTO! Agora teste:
+
+```
+1. Clique "Comprar agora"
+2. Preencha formulário
+3. Clique "Pagar"
+4. Simule pagamento
+5. Verifique:
+   ✅ Success page
+   ✅ Email cliente
+   ✅ Email dono
+   ✅ Link eBook abre
+```
+
+**Tempo: 5 minutos**
+
+---
+
+## 📊 TOTAL: 35 MINUTOS
+
+```
+Google Drive:  5 min
+Make.com:     15 min
+Infinity Pay: 10 min
+Testes:        5 min
+──────────────────────
+TOTAL:        35 min
+```
+
+---
+
+## 🎉 RESULTADO:
+
+```
+✅ Checkout funcionando
+✅ Emails automáticos
+✅ eBook entregue automaticamente
+✅ Página de sucesso
+✅ Tudo GRÁTIS!
+```
+
+---
+
+## 📚 SE TIVER DÚVIDA:
+
+- Google Drive? → TODO_LIST.txt
+- Make.com? → MAKE_COM_SETUP.md
+- Infinity Pay? → INFINITY_PAY_CONFIG.txt
+- Geral? → GUIA_RAPIDO.txt
+
+---
+
+## 🚀 COMEÇAR AGORA!
+
+Você tem tudo. É só executar estas 3 tarefas.
+
+**35 minutos e você vende! 💰**
+
+Vamo lá! 🎊

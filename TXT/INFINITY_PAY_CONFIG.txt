@@ -1,0 +1,116 @@
+# 🎯 URLS DE CONFIGURAÇÃO - INFINITY PAY + MAKE.COM
+
+## ⚡ VOCÊ PRECISA FAZER ISSO:
+
+### 1️⃣ MAKE.COM - Criar Webhook
+**Arquivo:** MAKE_COM_SETUP.md (siga os passos)
+
+**Você vai receber uma URL tipo:**
+```
+https://hook.us1.make.com/abc123xyz789def456
+```
+
+**COPIE e GUARDE ESSA URL!**
+
+---
+
+### 2️⃣ INFINITY PAY - Configurar Webhook
+
+#### Campo: "URL do Webhook"
+```
+Cole aqui: https://hook.us1.make.com/abc123xyz789def456
+(a URL que você copiou do Make.com)
+```
+
+#### Campo: "Redirecionar após o pagamento?"
+```
+ATIVE o toggle ✓
+```
+
+#### Campo: URL de Redirecionamento
+```
+Cole exatamente isto:
+https://seu-dominio.com/payment-success.html?orderId={order_id}
+
+⚠️ SUBSTITUA "seu-dominio.com" pelo domínio do cliente!
+
+EXEMPLOS:
+- Se domínio = drdossouafisio.com.br
+  Cole: https://drdossouafisio.com.br/payment-success.html?orderId={order_id}
+
+- Se domínio = fisioterapiajose.com.br
+  Cole: https://fisioterapiajose.com.br/payment-success.html?orderId={order_id}
+
+- Se domínio = josefisio.com.br
+  Cole: https://josefisio.com.br/payment-success.html?orderId={order_id}
+```
+
+---
+
+## 📋 CHECKLIST INFINITY PAY
+
+```
+Abra o painel Infinity Pay:
+
+☐ Procure a aba de Webhooks / Integrações
+☐ Cole URL do Make.com em "URL do Webhook"
+☐ Marque evento "payment.confirmed"
+☐ Em "Redirecionar após o pagamento?", ative o toggle
+☐ Cole a URL: https://SEU-DOMINIO-AQUI.com/payment-success.html?orderId={order_id}
+☐ Clique em "Salvar" ou "Criar"
+☐ Faça um teste de pagamento
+☐ Verifique se recebeu os 2 emails (seu email + teste)
+☐ Verifique se foi redirecionado pra success page
+```
+
+---
+
+## ✅ RESULTADO FINAL
+
+Quando cliente pagar:
+
+```
+CLIENTE VIDE:
+1. Preenche checkout
+2. Clica "Pagar"
+3. Paga em Infinity Pay
+4. Automaticamente redireciona pra:
+   ✅ Página "Obrigado pela Compra!"
+   ✅ Com botão "Acessar eBook"
+
+CLIENTE RECEBE:
+1. Email de confirmação
+2. Com link direto pro Google Drive
+3. Com seu ID de pedido
+
+VOCÊ RECEBE:
+1. Email de notificação de venda
+2. Com dados do cliente
+3. Com valor da venda
+```
+
+---
+
+## 🚀 FÁCIL ASSIM!
+
+1. Setup Make.com (10 min) → MAKE_COM_SETUP.md
+2. Configure Infinity Pay (5 min) → URLs acima
+3. Teste (5 min) → Faça uma compra de teste
+4. Pronto! Sistema funcionando! 🎉
+
+---
+
+## 📞 SUPORTE
+
+**Problema?** Verifique:
+- [ ] Webhook URL colada certa em Infinity Pay?
+- [ ] URL de Redirecionamento certa (sem typo)?
+- [ ] Make.com scenario ativado?
+- [ ] Gmail autorizado?
+- [ ] Eventos "payment.confirmed" marcados?
+
+Se der erro, verifique o "History" no Make.com!
+
+---
+
+**STATUS: PRONTO PARA CONFIGURAR! 🚀**
