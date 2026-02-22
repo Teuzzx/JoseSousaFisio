@@ -8,7 +8,7 @@ const products = {
         description: 'Material completo para fisioterapeutas e instrutores que desejam atuar com segurança e criatividade no Pilates para crianças.',
         price: 97.00,
         googleDriveLink: 'https://drive.google.com/drive/folders/1qyVV5vIQYrX1g3u0mA4PEs9vE6hJ5FJu?usp=drive_link',
-        infinityPayLink: 'https://checkout.infinitepay.io/mateushype/7KX79BXcAr', // link fornecido para teste
+        infinityPayLink: 'https://checkout.infinitepay.io/josedesousa_pilates/3fGcdldcXz', // link fornecido para teste
         image: 'src/assets/ebook-pilates-kids.jpg'
     },
     'kit-fisioterapeutas': {
@@ -349,3 +349,4 @@ function handlePaymentConfirmation(orderId) {
 
 // ===== INITIALIZATION =====
 initEmailJS();
+
