@@ -197,6 +197,23 @@
             box-shadow: 0 4px 15px rgba(28, 52, 96, 0.3);
         }
 
+        /* Destaque extra para o botão principal */
+        .access-btn-primary {
+            padding: 1.25rem 1.75rem;
+            font-size: 1.08rem;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #1c3460, #2a4e8c);
+            box-shadow: 0 10px 30px rgba(40, 64, 120, 0.25);
+            transition: transform 160ms ease, box-shadow 160ms ease;
+        }
+
+        .access-btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(40, 64, 120, 0.32);
+        }
+
+        .access-btn-primary:active { transform: translateY(-1px); }
+
         .access-btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(28, 52, 96, 0.4);
@@ -313,9 +330,7 @@
         <div class="success-wrapper">
             <!-- Header -->
             <div class="success-header">
-                <div class="success-icon">
-                    <i data-lucide="check-circle"></i>
-                </div>
+                <div class="success-icon">✅</div>
                 <h1>Pagamento Confirmado! 🎉</h1>
                 <p>Seu pedido foi processado com sucesso</p>
             </div>
@@ -325,7 +340,8 @@
                 <div class="success-message">
                     <i data-lucide="info"></i>
                     <div class="success-message-text">
-                        Um <strong>email de confirmação</strong> foi enviado para você com o link de acesso ao eBook. Verifique sua caixa de entrada e spam.
+                        Compra confirmada! Clique no botão <strong>Acessar eBook</strong> abaixo para abrir o material no Google Drive.
+                        Caso prefira, o link também está disponível na seção "Links Rápidos".
                     </div>
                 </div>
 
@@ -351,10 +367,10 @@
                 <div class="ebook-access">
                     <div class="ebook-access-title">📚 Acesse seu eBook</div>
                     <div class="ebook-access-text">
-                        Seu eBook está pronto para download via Google Drive. Clique no botão abaixo para acessar imediatamente.
+                        Seu eBook está pronto. Clique no botão abaixo para abrir o Google Drive e visualizar/baixar o arquivo quando quiser.
                     </div>
                     <div class="access-buttons">
-                        <a href="#" id="googleDriveLink" class="access-btn access-btn-primary" target="_blank">
+                        <a href="#" id="googleDriveLink" class="access-btn access-btn-primary" target="_blank" style="padding:1.25rem 1.5rem; font-size:1.05rem;">
                             <i data-lucide="download"></i>
                             Acessar eBook
                         </a>
@@ -364,6 +380,8 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Quick links removidos por solicitação: a página mostra apenas o material comprado -->
 
                 <div class="footer-actions">
                     <a href="index.html" class="btn btn-secondary">
@@ -379,6 +397,7 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         // Get order ID from URL
         function getOrderIdFromURL() {
@@ -387,20 +406,83 @@
         }
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             const orderId = getOrderIdFromURL();
 
-            if (!orderId) {
-                console.error('Order ID not found');
-                return;
+            // Try to resolve order using multiple fallbacks:
+            // 1) orderId in URL -> localStorage -> webhook server
+            // 2) sessionStorage currentPaymentOrder/pendingOrder (when redirect doesn't include orderId)
+            // 3) last order from localStorage
+
+            let order = null;
+
+            if (orderId) {
+                // Try to get order from localStorage first
+                const orders = JSON.parse(localStorage.getItem('checkout_orders') || '[]');
+                order = orders.find(o => o.orderId === orderId);
+
+                // If not found locally, try to fetch from the webhook server (if configured)
+                if (!order) {
+                    const webhookServer = localStorage.getItem('webhookServerUrl');
+                    if (webhookServer) {
+                        try {
+                            const resp = await fetch(`${webhookServer.replace(/\/$/, '')}/orders/${orderId}`);
+                            if (resp.ok) {
+                                order = await resp.json();
+                            } else {
+                                console.warn('Pedido não encontrado no servidor webhook');
+                            }
+                        } catch (err) {
+                            console.warn('Erro ao buscar pedido no servidor webhook', err);
+                        }
+                    }
+                }
+
+                if (!order) {
+                    console.warn('Order ID presente, mas pedido não encontrado localmente ou no servidor:', orderId);
+                }
             }
 
-            // Get order from localStorage
-            const orders = JSON.parse(localStorage.getItem('checkout_orders') || '[]');
-            const order = orders.find(o => o.orderId === orderId);
+            // If still not found, try sessionStorage saved before redirect (checkout.js sets currentPaymentOrder/pendingOrder)
+            if (!order) {
+                try {
+                    const sessionRaw = sessionStorage.getItem('currentPaymentOrder') || sessionStorage.getItem('pendingOrder');
+                    if (sessionRaw) {
+                        const sessionOrder = JSON.parse(sessionRaw);
+                        // sessionOrder may have a subset of fields; normalize to match expected `order` shape
+                        order = Object.assign({
+                            orderId: sessionOrder.orderId || (`ORD-${Date.now()}`),
+                            productId: sessionOrder.productId || sessionOrder.productId,
+                            productName: sessionOrder.productName || sessionOrder.productName,
+                            price: sessionOrder.amount || sessionOrder.price || 0,
+                            customerName: sessionOrder.customerName || sessionOrder.customerName,
+                            customerEmail: sessionOrder.customerEmail || sessionOrder.customerEmail,
+                            customerPhone: sessionOrder.customerPhone || sessionOrder.customerPhone,
+                            timestamp: sessionOrder.timestamp || new Date().toISOString(),
+                            status: sessionOrder.status || 'paid'
+                        }, sessionOrder);
+                    }
+                } catch (err) {
+                    console.warn('Erro ao ler pedido da sessionStorage', err);
+                }
+            }
+
+            // As a last resort, use the most recent order from localStorage
+            if (!order) {
+                const ordersAll = JSON.parse(localStorage.getItem('checkout_orders') || '[]');
+                if (ordersAll.length) {
+                    order = ordersAll[ordersAll.length - 1];
+                    console.warn('Usando último pedido em localStorage como fallback:', order.orderId);
+                }
+            }
 
             if (!order) {
-                console.error('Order not found in localStorage');
+                console.error('Order not found');
+                // Display minimal info and stop further processing
+                document.getElementById('orderId').textContent = orderId || '—';
+                document.getElementById('productName').textContent = '-';
+                document.getElementById('amount').textContent = '-';
+                document.getElementById('date').textContent = '-';
                 return;
             }
 
@@ -418,65 +500,115 @@
                 minute: '2-digit'
             });
 
-            // Get product
+            // Get product (links configurados conforme produtos do site)
             const products = {
                 'pilates-kids': {
-                    googleDriveLink: 'https://drive.google.com/file/d/1234567890/view?usp=sharing'
+                    name: 'Pilates Kids – Guia Prático',
+                    priceOld: 'R$ 397,00',
+                    priceNow: 'R$ 97,00',
+                    googleDriveLink: 'https://drive.google.com/drive/folders/1qyVV5vIQYrX1g3u0mA4PEs9vE6hJ5FJu?usp=drive_link'
                 },
-                'exercicios-alunos': {
-                    googleDriveLink: 'https://drive.google.com/file/d/0987654321/view?usp=sharing'
+                'kit-fisioterapeutas': {
+                    name: 'Kit com 18 Documentos para Fisioterapeutas',
+                    priceOld: 'R$ 267,00',
+                    priceNow: 'R$ 67,00',
+                    googleDriveLink: 'https://drive.google.com/drive/folders/1-KuijCHXVMZ9yc0CnMFCeEmB_rIAI8g-?usp=sharing'
                 },
-                'documentos-studio': {
-                    googleDriveLink: 'https://drive.google.com/file/d/1111111111/view?usp=sharing'
+                'kit-studio': {
+                    name: 'Kit Essencial para Studio',
+                    priceOld: 'R$ 168,00',
+                    priceNow: 'R$ 47,00',
+                    googleDriveLink: 'https://drive.google.com/drive/folders/1EpM4PXRrIAqBpOGFN-ikNkEFAFKjDJjf?usp=drive_link'
                 }
             };
 
-            const product = products[order.productId];
+            let product = products[order.productId];
+            const linkEl = document.getElementById('googleDriveLink');
             if (product) {
-                document.getElementById('googleDriveLink').href = product.googleDriveLink;
+                const driveLink = product.googleDriveLink;
+                linkEl.href = driveLink;
+                linkEl.target = '_blank';
+                // Atualiza nome do produto caso falte
+                if (!order.productName) order.productName = product.name;
+            } else if (order.googleDriveLink) {
+                // Fallback: usar link direto vindo do pedido (sessionStorage/currentPaymentOrder)
+                linkEl.href = order.googleDriveLink;
+                linkEl.target = '_blank';
+            } else {
+                // Sem link conhecido: desabilita o botão
+                linkEl.removeAttribute('href');
+                linkEl.style.opacity = '0.6';
+                linkEl.style.cursor = 'not-allowed';
             }
+
+            // 'Links Rápidos' removidos — a página é específica para o item comprado
 
             // Download receipt
             document.getElementById('downloadReceipt').addEventListener('click', (e) => {
                 e.preventDefault();
                 downloadReceipt(order);
             });
+
+            // no manual email button — emails are sent automatically by the webhook server when payment is confirmed
         });
 
-        // Download receipt as PDF or text
+        // Download receipt as PDF (uses jsPDF)
         function downloadReceipt(order) {
-            const receipt = `
-RECIBO DE COMPRA - Dr. José Sousa
-==================================
+            try {
+                const doc = new window.jspdf.jsPDF({ unit: 'pt', format: 'a4' });
+                const left = 40;
+                let y = 50;
+                doc.setFontSize(18);
+                doc.text('RECIBO DE COMPRA - Dr. José Sousa', left, y);
+                y += 28;
 
-Número do Pedido: ${order.orderId}
-Data: ${new Date(order.timestamp).toLocaleDateString('pt-BR')}
+                doc.setFontSize(11);
+                doc.text(`Número do Pedido: ${order.orderId}`, left, y); y += 18;
+                doc.text(`Data: ${new Date(order.timestamp).toLocaleString('pt-BR')}`, left, y); y += 24;
 
-DADOS DO CLIENTE
-Cliente: ${order.customerName}
-E-mail: ${order.customerEmail}
-Telefone: ${order.customerPhone}
+                doc.setFontSize(12);
+                doc.text('DADOS DO CLIENTE', left, y); y += 16;
+                doc.setFontSize(10);
+                doc.text(`Cliente: ${order.customerName || '-'}`, left, y); y += 14;
+                doc.text(`E-mail: ${order.customerEmail || '-'}`, left, y); y += 14;
+                doc.text(`Telefone: ${order.customerPhone || '-'}`, left, y); y += 18;
 
-PRODUTO ADQUIRIDO
-Produto: ${order.productName}
-Valor: R$ ${order.price.toFixed(2).replace('.', ',')}
+                doc.setFontSize(12);
+                doc.text('PRODUTO ADQUIRIDO', left, y); y += 16;
+                doc.setFontSize(10);
+                doc.text(`Produto: ${order.productName || order.productId || '-'}`, left, y); y += 14;
+                doc.text(`Valor: R$ ${Number(order.price || 0).toFixed(2).replace('.', ',')}`, left, y); y += 24;
 
-STATUS: PAGO ✓
+                doc.setFontSize(11);
+                doc.text('STATUS: PAGO ✓', left, y); y += 20;
 
-Obrigado pela sua compra!
-            `.trim();
+                doc.setFontSize(10);
+                doc.text('Obrigado pela sua compra!', left, y);
 
-            const blob = new Blob([receipt], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `recibo-${order.orderId}.txt`;
-            a.click();
-            window.URL.revokeObjectURL(url);
+                const fileName = `recibo-${order.orderId}.pdf`;
+                doc.save(fileName);
+            } catch (err) {
+                console.error('Erro ao gerar PDF', err);
+                // Fallback para texto simples
+                const receipt = `RECIBO - ${order.orderId}\nCliente: ${order.customerName}\nE-mail: ${order.customerEmail}\nProduto: ${order.productName}\nValor: R$ ${order.price}`;
+                const blob = new Blob([receipt], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `recibo-${order.orderId}.txt`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
         }
 
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Initialize Lucide icons (se disponível)
+        try {
+            if (typeof lucide !== 'undefined' && lucide && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
+            }
+        } catch (err) {
+            console.warn('Lucide icons não carregado ou falha ao inicializar:', err);
+        }
     </script>
 </body>
 </html>

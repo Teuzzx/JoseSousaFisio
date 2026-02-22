@@ -5,25 +5,28 @@ const products = {
     'pilates-kids': {
         id: 'pilates-kids',
         name: 'Pilates Kids – Guia Prático',
-        description: 'Guia completo para trabalhar com crianças no Pilates com exercícios adaptados e técnicas lúdicas.',
-        price: 67.00,
-        googleDriveLink: 'https://drive.google.com/file/d/1234567890/view?usp=sharing', // ← CONFIGURE SEU LINK DO GOOGLE DRIVE
+        description: 'Material completo para fisioterapeutas e instrutores que desejam atuar com segurança e criatividade no Pilates para crianças.',
+        price: 97.00,
+        googleDriveLink: 'https://drive.google.com/drive/folders/1qyVV5vIQYrX1g3u0mA4PEs9vE6hJ5FJu?usp=drive_link',
+        infinityPayLink: 'https://checkout.infinitepay.io/mateushype/7KX79BXcAr', // link fornecido para teste
         image: 'src/assets/ebook-pilates-kids.jpg'
     },
-    'exercicios-alunos': {
-        id: 'exercicios-alunos',
-        name: 'Guia de Exercícios de Pilates para Alunos',
-        description: 'Material didático completo para seus alunos praticarem em casa com exercícios organizados por nível de dificuldade.',
-        price: 47.00,
-        googleDriveLink: 'https://drive.google.com/file/d/0987654321/view?usp=sharing', // ← CONFIGURE SEU LINK DO GOOGLE DRIVE
+    'kit-fisioterapeutas': {
+        id: 'kit-fisioterapeutas',
+        name: 'Kit com 18 Documentos para Fisioterapeutas',
+        description: 'Pacote com 18 documentos essenciais para atendimento clínico, padronização e segurança.',
+        price: 67.00,
+        googleDriveLink: 'https://drive.google.com/drive/folders/1-KuijCHXVMZ9yc0CnMFCeEmB_rIAI8g-?usp=sharing',
+        infinityPayLink: 'https://checkout.infinitepay.io/josedesousa_pilates/1pdLnUlmmN',
         image: 'src/assets/ebook-exercicios-alunos.jpg'
     },
-    'documentos-studio': {
-        id: 'documentos-studio',
-        name: 'Pacote de documentos obrigatório para seu studio',
-        description: 'Todos os documentos legais e formulários necessários para abrir e operar seu estúdio de Pilates.',
-        price: 87.00,
-        googleDriveLink: 'https://drive.google.com/file/d/1111111111/view?usp=sharing', // ← CONFIGURE SEU LINK DO GOOGLE DRIVE
+    'kit-studio': {
+        id: 'kit-studio',
+        name: 'Kit Essencial para Studio',
+        description: 'Conjunto essencial para estruturar seu studio com organização, segurança jurídica e templates prontos.',
+        price: 47.00,
+        googleDriveLink: 'https://drive.google.com/drive/folders/1EpM4PXRrIAqBpOGFN-ikNkEFAFKjDJjf?usp=drive_link',
+        infinityPayLink: 'https://checkout.infinitepay.io/josedesousa_pilates/2RVoQhztSJ',
         image: 'src/assets/ebook-documentos-studio.jpg'
     }
 };
@@ -147,7 +150,18 @@ function handleCheckoutSubmit(event) {
 
     // Redirect to Infinity Pay
     setTimeout(() => {
-        redirectToInfinityPay(order, product);
+        // First attempt to persist order on webhook server (if configured) so server has the order when webhook arrives
+        const webhookServer = localStorage.getItem('webhookServerUrl');
+        if (webhookServer) {
+            fetch(`${webhookServer.replace(/\/$/, '')}/orders`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(order)
+            }).catch(err => console.warn('Não foi possível enviar order ao servidor webhook:', err))
+              .finally(() => redirectToInfinityPay(order, product));
+        } else {
+            redirectToInfinityPay(order, product);
+        }
     }, 1000);
 }
 
@@ -163,8 +177,8 @@ function redirectToInfinityPay(order, product) {
     // ⚠️ CONFIGURE AQUI SEU LINK DO INFINITY PAY
     // Cole seu link customizado do Infinity Pay que você criou na plataforma
     // Exemplo: https://app.infinitypay.io/checkout/c1a2b3c4d5e6f7g8h9i0
-    
-    const infinityPayLink = 'https://app.infinitypay.io/checkout/SEU-LINK-AQUI'; // ← SUBSTITUA POR SEU LINK!
+    // Priority: product-specific link -> global localStorage link -> placeholder
+    const infinityPayLink = (product && product.infinityPayLink) || localStorage.getItem('infinityPayLink') || 'https://app.infinitypay.io/checkout/SEU-LINK-AQUI'; // ← Cole seu link no localStorage para uso imediato
     
     // Armazenar ordem atual para recuperar quando o webhook chegar
     sessionStorage.setItem('currentPaymentOrder', JSON.stringify({
@@ -182,6 +196,31 @@ function redirectToInfinityPay(order, product) {
     // O Infinity Pay vai redirecionar de volta pro payment-success.html após pagamento
     window.location.href = infinityPayLink;
 }
+
+// Utility: permite definir o link do Infinity Pay via console (ex: setInfinityPayLink('https://app.infinitypay.io/checkout/...'))
+function setInfinityPayLink(link) {
+    try {
+        if (!link || typeof link !== 'string') throw new Error('Link inválido');
+        localStorage.setItem('infinityPayLink', link);
+        console.log('Infinity Pay link salvo em localStorage');
+        return true;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
+}
+
+window.setInfinityPayLink = setInfinityPayLink;
+
+// Utility: define a URL do servidor webhook para gravar orders antes do pagamento
+function setWebhookServerUrl(url) {
+    if (!url || typeof url !== 'string') return false;
+    localStorage.setItem('webhookServerUrl', url);
+    console.log('Webhook server url armazenada');
+    return true;
+}
+
+window.setWebhookServerUrl = setWebhookServerUrl;
 
 // Show error message
 function showError(message) {
