@@ -9,7 +9,7 @@
 
 const CONFIG = {
     whatsappNumber: '5589994584100',
-    instagramUrl: 'https://www.instagram.com/josedsousafisio/',
+    instagramUrl: 'https://www.instagram.com/josedesousa.pilates/',
     animationDuration: 600,
     scrollOffset: 80,
     carouselInterval: 5000
@@ -20,37 +20,9 @@ const CONFIG = {
 // ============================================
 
 const state = {
-    currentTestimonial: 0,
     isMenuOpen: false,
     isScrolling: false
 };
-
-// ============================================
-// DEPOIMENTOS
-// ============================================
-
-const testimonials = [
-    {
-        text: "Dr. José transformou minha vida! Sofria com dores nas costas há anos e hoje estou completamente recuperada. Profissional excepcional e muito atencioso.",
-        author: "Maria Silva",
-        role: "Paciente de Pilates"
-    },
-    {
-        text: "Após a cirurgia no joelho, pensei que não voltaria a correr. Com o tratamento do Dr. José, não só voltei como melhorei minha performance. Muito grato!",
-        author: "Carlos Oliveira",
-        role: "Atleta Amador"
-    },
-    {
-        text: "Excelente profissional! O tratamento para minha tendinite foi muito eficaz. Recomendo para todos que precisam de um fisioterapeuta competente.",
-        author: "Ana Costa",
-        role: "Paciente de Fisioterapia"
-    },
-    {
-        text: "Depois de meses com dor ciática, finalmente encontrei alívio. Dr. José é muito dedicado e explica tudo detalhadamente. Super recomendo!",
-        author: "Roberto Santos",
-        role: "Paciente de Reabilitação"
-    }
-];
 
 // ============================================
 // INICIALIZAÇÃO
@@ -64,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScroll();
     initScrollReveal();
-    initTestimonialsCarousel();
-    initLazyLoading();
+    initScrollSpy();
+    initFaqAccordion();
 });
 
 // ============================================
@@ -196,7 +168,7 @@ window.scrollToSection = scrollToSection;
 function initScrollReveal() {
     // Seleciona elementos para animar
     const revealElements = document.querySelectorAll(
-        '.service-card, .feature-card, .ebook-card, .timeline-item, .stat-card, .contact-info-card'
+        '.service-card, .feature-card, .ebook-card, .timeline-item, .stat-card, .contact-info-card, .specialty-card, .faq-item, .testimonial-card'
     );
 
     // Se IntersectionObserver não for suportado, mantém elementos visíveis
@@ -237,65 +209,100 @@ function initScrollReveal() {
 }
 
 // ============================================
-// DEPOIMENTOS CAROUSEL
+// SCROLLSPY - Link ativo no header
 // ============================================
 
-function initTestimonialsCarousel() {
-    updateTestimonial();
-    
-    // Auto-advance carousel
-    setInterval(() => {
-        nextTestimonial();
-    }, CONFIG.carouselInterval);
-}
+function initScrollSpy() {
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-function updateTestimonial() {
-    const card = document.getElementById('testimonialCard');
-    const text = document.getElementById('testimonialText');
-    const author = document.getElementById('testimonialAuthor');
-    const dots = document.querySelectorAll('.carousel-dot');
-    
-    if (!card || !text || !author) return;
+    if (!('IntersectionObserver' in window) || sections.length === 0) return;
 
-    // Fade out
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(10px)';
-    
-    setTimeout(() => {
-        const testimonial = testimonials[state.currentTestimonial];
-        text.textContent = `"${testimonial.text}"`;
-        author.textContent = testimonial.author;
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === state.currentTestimonial);
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = `#${entry.target.id}`;
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === id);
+                });
+                mobileLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === id);
+                });
+            }
         });
-        
-        // Fade in
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-    }, 300);
+    }, {
+        rootMargin: '-40% 0px -55% 0px',
+        threshold: 0
+    });
+
+    sections.forEach(section => spyObserver.observe(section));
 }
 
-function nextTestimonial() {
-    state.currentTestimonial = (state.currentTestimonial + 1) % testimonials.length;
-    updateTestimonial();
+// ============================================
+// FAQ ACCORDION
+// ============================================
+
+function initFaqAccordion() {
+    const questions = document.querySelectorAll('.faq-question');
+
+    questions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('active');
+
+            // Close all other items
+            questions.forEach(q => {
+                const otherItem = q.closest('.faq-item');
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    q.setAttribute('aria-expanded', 'false');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            // Toggle current item
+            item.classList.toggle('active', !isOpen);
+            question.setAttribute('aria-expanded', String(!isOpen));
+
+            if (!isOpen) {
+                answer.style.maxHeight = `${answer.scrollHeight}px`;
+            } else {
+                answer.style.maxHeight = null;
+            }
+        });
+    });
 }
 
-function previousTestimonial() {
-    state.currentTestimonial = (state.currentTestimonial - 1 + testimonials.length) % testimonials.length;
-    updateTestimonial();
+// ============================================
+// SERVICE TABS (Sou Paciente / Sou Profissional)
+// ============================================
+
+function switchServiceTab(tabName) {
+    const tabs = document.querySelectorAll('.service-tab');
+    const panels = document.querySelectorAll('.service-panel');
+
+    tabs.forEach(tab => {
+        const isActive = tab.id === `tab-${tabName}`;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', String(isActive));
+    });
+
+    panels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${tabName}`);
+    });
+
+    // Garante que os cards do painel ativo estejam visíveis (força o reveal)
+    const activePanel = document.getElementById(`panel-${tabName}`);
+    if (activePanel) {
+        activePanel.querySelectorAll('.reveal').forEach(el => {
+            el.classList.add('revealed');
+        });
+    }
 }
 
-function goToTestimonial(index) {
-    state.currentTestimonial = index;
-    updateTestimonial();
-}
-
-// Make functions available globally
-window.nextTestimonial = nextTestimonial;
-window.previousTestimonial = previousTestimonial;
-window.goToTestimonial = goToTestimonial;
+window.switchServiceTab = switchServiceTab;
 
 // ============================================
 // WHATSAPP FUNCTIONS
@@ -601,38 +608,6 @@ function redirectToCheckout(productId) {
 }
 
 window.redirectToCheckout = redirectToCheckout;
-
-// ============================================
-// LAZY LOADING
-// ============================================
-
-function initLazyLoading() {
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    img.classList.add('loaded');
-                    imageObserver.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px 0px'
-        });
-
-        lazyImages.forEach(img => imageObserver.observe(img));
-    } else {
-        // Fallback for browsers without IntersectionObserver
-        lazyImages.forEach(img => {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-        });
-    }
-}
 
 // ============================================
 // PERFORMANCE MONITORING

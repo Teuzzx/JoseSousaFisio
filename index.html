@@ -34,7 +34,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
     <!-- Header -->
@@ -144,7 +144,7 @@
                 <div class="about-content">
                     <div class="about-image-wrapper">
                         <div class="about-image">
-                            <img src="img/IMG_8195.jpg" alt="Dr. José Sousa - Fisioterapeuta">
+                            <img src="img/IMG_8195.jpg" alt="Dr. José Sousa - Fisioterapeuta" loading="lazy">
                         </div>
                         <div class="about-badge">
                             <div class="number">2023</div>
@@ -212,6 +212,104 @@
             </div>
         </section>
 
+        <!-- Especialidades Section -->
+        <section id="especialidades" class="section especialidades" aria-labelledby="especialidades-titulo">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">
+                        <i data-lucide="dumbbell" style="width: 14px; height: 14px;"></i>
+                        Especialidades
+                    </span>
+                    <h2 id="especialidades-titulo" class="section-title">
+                        Minhas <span class="highlight">Especialidades</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Ampla experiência em diferentes modalidades e tratamentos com o Método Pilates.
+                    </p>
+                </div>
+
+                <div class="especialidades-grid">
+                    <article class="specialty-card">
+                        <div class="specialty-icon">
+                            <i data-lucide="dumbbell"></i>
+                        </div>
+                        <h3>Pilates Clássico</h3>
+                        <p>Método original de Joseph Pilates com todas as suas técnicas e princípios fundamentais.</p>
+                        <ul class="specialty-list">
+                            <li><i data-lucide="check-circle"></i> Mat Pilates</li>
+                            <li><i data-lucide="check-circle"></i> Aparelhos</li>
+                            <li><i data-lucide="check-circle"></i> Acessórios</li>
+                        </ul>
+                    </article>
+
+                    <article class="specialty-card">
+                        <div class="specialty-icon">
+                            <i data-lucide="smile"></i>
+                        </div>
+                        <h3>Pilates Kids</h3>
+                        <p>Especializado em crianças, desenvolvendo força, postura e consciência corporal desde cedo.</p>
+                        <ul class="specialty-list">
+                            <li><i data-lucide="check-circle"></i> 4-8 anos</li>
+                            <li><i data-lucide="check-circle"></i> 9-12 anos</li>
+                            <li><i data-lucide="check-circle"></i> Correção postural</li>
+                        </ul>
+                    </article>
+
+                    <article class="specialty-card">
+                        <div class="specialty-icon">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <h3>Pilates Gestantes</h3>
+                        <p>Programa seguro para grávidas, fortalecendo core e preparando para o parto.</p>
+                        <ul class="specialty-list">
+                            <li><i data-lucide="check-circle"></i> Reabilitação pós-parto</li>
+                            <li><i data-lucide="check-circle"></i> Prevenção de diástase</li>
+                            <li><i data-lucide="check-circle"></i> Alívio de dores</li>
+                        </ul>
+                    </article>
+
+                    <article class="specialty-card">
+                        <div class="specialty-icon">
+                            <i data-lucide="stethoscope"></i>
+                        </div>
+                        <h3>Pilates Terapêutico</h3>
+                        <p>Reabilitação e tratamento de lesões com exercícios específicos e adaptados.</p>
+                        <ul class="specialty-list">
+                            <li><i data-lucide="check-circle"></i> Dores na coluna</li>
+                            <li><i data-lucide="check-circle"></i> Lesões articulares</li>
+                            <li><i data-lucide="check-circle"></i> Pós-cirurgias</li>
+                        </ul>
+                    </article>
+
+                    <article class="specialty-card">
+                        <div class="specialty-icon">
+                            <i data-lucide="feather"></i>
+                        </div>
+                        <h3>Pilates Aéreo</h3>
+                        <p>Prática na rede suspensa, aumentando desafio e trabalhando equilíbrio e força.</p>
+                        <ul class="specialty-list">
+                            <li><i data-lucide="check-circle"></i> Maior estímulo muscular</li>
+                            <li><i data-lucide="check-circle"></i> Diversão e desafio</li>
+                            <li><i data-lucide="check-circle"></i> Resultados acelerados</li>
+                        </ul>
+                    </article>
+
+                    <article class="specialty-card">
+                        <div class="specialty-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3>Pilates Funcional</h3>
+                        <p>Trabalho integrado para melhorar movimentos do dia a dia e performance atlética.</p>
+                        <ul class="specialty-list">
+                            <li><i data-lucide="check-circle"></i> Atletas</li>
+                            <li><i data-lucide="check-circle"></i> Idosos</li>
+                            <li><i data-lucide="check-circle"></i> Reabilitação</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- Services Section -->
         <section id="servicos" class="section services" aria-labelledby="servicos-titulo">
             <div class="container">
@@ -224,95 +322,169 @@
                         Como posso <span class="highlight">ajudar</span> você?
                     </h2>
                     <p class="section-subtitle">
-                        Ofereço atendimentos personalizados em Fisioterapia e Pilates, além de 
-                        capacitações exclusivas para profissionais da área.
+                        Seja para cuidar da sua saúde ou para alavancar a sua carreira no Pilates, 
+                        escolha o caminho certo para você.
                     </p>
                 </div>
-                
-                <h3 class="category-title">Atendimentos</h3>
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="service-icon blue">
-                            <i data-lucide="activity"></i>
-                        </div>
-                        <h3>Pilates Presencial</h3>
-                        <p>Sessões personalizadas no Studio de Postura Barroso, com programas individuais para postura, dores e fortalecimento.</p>
-                        <button class="service-btn" onclick="openServiceWhatsApp('pilates-presencial')">
-                            Quero esse serviço
-                        </button>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon green">
-                            <i data-lucide="monitor"></i>
-                        </div>
-                        <h3>Pilates Online</h3>
-                        <p>Aulas ao vivo adaptadas ao seu espaço e recursos em casa, com total flexibilidade de horários.</p>
-                        <button class="service-btn" onclick="openServiceWhatsApp('pilates-online')">
-                            Quero esse serviço
-                        </button>
-                    </article>
+
+                <div class="service-tabs" role="tablist" aria-label="Escolha seu perfil">
+                    <button type="button" class="service-tab active" id="tab-pacientes" role="tab" aria-selected="true" aria-controls="panel-pacientes" onclick="switchServiceTab('pacientes')">
+                        <i data-lucide="heart-pulse"></i>
+                        <span>Sou Paciente</span>
+                        <small>Quero cuidar da minha saúde</small>
+                    </button>
+                    <button type="button" class="service-tab" id="tab-profissionais" role="tab" aria-selected="false" aria-controls="panel-profissionais" onclick="switchServiceTab('profissionais')">
+                        <i data-lucide="graduation-cap"></i>
+                        <span>Sou Profissional</span>
+                        <small>Quero me especializar</small>
+                    </button>
                 </div>
-                
-                <h3 class="category-title">Formação Profissional</h3>
-                <div class="services-grid">
-                    <article class="service-card">
+
+                <!-- Panel: Pacientes -->
+                <div class="service-panel active" id="panel-pacientes" role="tabpanel" aria-labelledby="tab-pacientes">
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-icon blue">
+                                    <i data-lucide="activity"></i>
+                                </div>
+                                <span class="service-badge">Mais procurado</span>
+                            </div>
+                            <h3>Pilates Presencial</h3>
+                            <p>Sessões personalizadas no Studio de Postura Barroso, com programas individuais para postura, dores e fortalecimento.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Avaliação postural completa</li>
+                                <li><i data-lucide="check"></i> Programa individualizado</li>
+                                <li><i data-lucide="check"></i> Acompanhamento próximo em cada sessão</li>
+                            </ul>
+                            <button class="service-btn" onclick="openServiceWhatsApp('pilates-presencial')">
+                                Agendar avaliação
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-icon green">
+                                    <i data-lucide="monitor"></i>
+                                </div>
+                            </div>
+                            <h3>Pilates Online</h3>
+                            <p>Aulas ao vivo adaptadas ao seu espaço e recursos em casa, com total flexibilidade de horários.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Aulas ao vivo personalizadas</li>
+                                <li><i data-lucide="check"></i> Adaptação ao seu espaço em casa</li>
+                                <li><i data-lucide="check"></i> Total flexibilidade de horários</li>
+                            </ul>
+                            <button class="service-btn" onclick="openServiceWhatsApp('pilates-online')">
+                                Agendar avaliação
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Panel: Profissionais -->
+                <div class="service-panel" id="panel-profissionais" role="tabpanel" aria-labelledby="tab-profissionais">
+                    <article class="service-card service-card-featured">
                         <div class="service-icon purple">
                             <i data-lucide="graduation-cap"></i>
                         </div>
-                        <h3>Formação Completa em Pilates</h3>
-                        <p>Curso de 200h: Solo, Bola, Aparelhos e Acessórios, com prática supervisionada e certificação.</p>
-                        <button class="service-btn" onclick="openServiceWhatsApp('formacao-pilates')">
-                            Saiba mais
-                        </button>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon orange">
-                            <i data-lucide="users"></i>
+                        <div class="service-card-featured-content">
+                            <div class="service-card-header">
+                                <h3>Formação Completa em Pilates</h3>
+                                <span class="service-badge">Mais procurado</span>
+                            </div>
+                            <p>Curso de 200h: Solo, Bola, Aparelhos e Acessórios, com prática supervisionada e certificação ao final.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Solo, Bola, Aparelhos e Acessórios</li>
+                                <li><i data-lucide="check"></i> Prática supervisionada</li>
+                                <li><i data-lucide="check"></i> Certificação ao final</li>
+                            </ul>
+                            <button class="service-btn" onclick="openServiceWhatsApp('formacao-pilates')">
+                                Saiba mais
+                                <i data-lucide="arrow-right"></i>
+                            </button>
                         </div>
-                        <h3>Workshops</h3>
-                        <p>Pilates Kids, Mat Pilates e Pilates nas Disfunções da Coluna Vertebral. Capacitação intensiva.</p>
-                        <button class="service-btn" onclick="openServiceWhatsApp('workshops')">
-                            Saiba mais
-                        </button>
                     </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon teal">
-                            <i data-lucide="target"></i>
-                        </div>
-                        <h3>Mentoria Online</h3>
-                        <p>Gestão de estúdios, planejamento de aulas e desenvolvimento de carreira no Pilates.</p>
-                        <button class="service-btn" onclick="openServiceWhatsApp('mentoria')">
-                            Saiba mais
-                        </button>
-                    </article>
-                </div>
-                
-                <h3 class="category-title">Materiais Digitais</h3>
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="service-icon red">
-                            <i data-lucide="book-open"></i>
-                        </div>
-                        <h3>E-books Exclusivos</h3>
-                        <p>Materiais digitais completos sobre o Método Pilates para alunos e profissionais.</p>
-                        <button class="service-btn" onclick="scrollToSection('#ebooks')">
-                            Ver e-books
-                        </button>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon blue">
-                            <i data-lucide="file-text"></i>
-                        </div>
-                        <h3>Modelos Editáveis</h3>
-                        <p>Documentos prontos e editáveis para administração e padronização de estúdios.</p>
-                        <button class="service-btn" onclick="openServiceWhatsApp('modelos-editaveis')">
-                            Saiba mais
-                        </button>
-                    </article>
+
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-icon orange">
+                                    <i data-lucide="users"></i>
+                                </div>
+                            </div>
+                            <h3>Workshops</h3>
+                            <p>Pilates Kids, Mat Pilates e Pilates nas Disfunções da Coluna Vertebral. Capacitação intensiva.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Pilates Kids</li>
+                                <li><i data-lucide="check"></i> Mat Pilates</li>
+                                <li><i data-lucide="check"></i> Disfunções da Coluna</li>
+                            </ul>
+                            <button class="service-btn" onclick="openServiceWhatsApp('workshops')">
+                                Saiba mais
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-icon teal">
+                                    <i data-lucide="target"></i>
+                                </div>
+                            </div>
+                            <h3>Mentoria Online</h3>
+                            <p>Gestão de estúdios, planejamento de aulas e desenvolvimento de carreira no Pilates.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Gestão de estúdios</li>
+                                <li><i data-lucide="check"></i> Planejamento de aulas</li>
+                                <li><i data-lucide="check"></i> Desenvolvimento de carreira</li>
+                            </ul>
+                            <button class="service-btn" onclick="openServiceWhatsApp('mentoria')">
+                                Saiba mais
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-icon red">
+                                    <i data-lucide="book-open"></i>
+                                </div>
+                            </div>
+                            <h3>E-books Exclusivos</h3>
+                            <p>Materiais digitais completos sobre o Método Pilates para alunos e profissionais.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Conteúdo para profissionais</li>
+                                <li><i data-lucide="check"></i> Acesso imediato</li>
+                                <li><i data-lucide="check"></i> Modelos prontos para uso</li>
+                            </ul>
+                            <button class="service-btn" onclick="scrollToSection('#ebooks')">
+                                Ver e-books
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-icon blue">
+                                    <i data-lucide="file-text"></i>
+                                </div>
+                            </div>
+                            <h3>Modelos Editáveis</h3>
+                            <p>Documentos prontos e editáveis para administração e padronização de estúdios.</p>
+                            <ul class="service-features">
+                                <li><i data-lucide="check"></i> Documentos prontos</li>
+                                <li><i data-lucide="check"></i> Editáveis em Word/PDF</li>
+                                <li><i data-lucide="check"></i> Padronização do estúdio</li>
+                            </ul>
+                            <button class="service-btn" onclick="openServiceWhatsApp('modelos-editaveis')">
+                                Saiba mais
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -435,7 +607,7 @@
                 <div class="ebooks-grid">
                     <article class="ebook-card">
                         <div class="ebook-cover">
-                            <img src="src/assets/ebook-pilates-kids.jpg" alt="Capa do eBook Pilates Kids - Guia Prático">
+                            <img src="src/assets/ebook-pilates-kids.svg" alt="Capa do eBook Pilates Kids - Guia Prático" loading="lazy">
                             <span class="ebook-badge">Mais Vendido</span>
                         </div>
                         <div class="ebook-content">
@@ -468,7 +640,7 @@
                     
                     <article class="ebook-card">
                         <div class="ebook-cover">
-                            <img src="src/assets/ebook-exercicios-alunos.jpg" alt="Capa do Kit com 18 Documentos para Fisioterapeutas">
+                            <img src="src/assets/ebook-exercicios-alunos.svg" alt="Capa do Kit com 18 Documentos para Fisioterapeutas" loading="lazy">
                             <span class="ebook-badge">Kit Profissional</span>
                         </div>
                         <div class="ebook-content">
@@ -501,7 +673,7 @@
                     
                     <article class="ebook-card">
                         <div class="ebook-cover">
-                            <img src="src/assets/ebook-documentos-studio.jpg" alt="Capa do Kit Essencial para Studio">
+                            <img src="src/assets/ebook-documentos-studio.svg" alt="Capa do Kit Essencial para Studio" loading="lazy">
                             <span class="ebook-badge">Essencial</span>
                         </div>
                         <div class="ebook-content">
@@ -553,7 +725,7 @@
                 
                 <div class="filosofia-blog-container">
                     <div class="filosofia-blog-image">
-                        <img src="./img/Pessoal, movimento.jpeg" alt="Dr. José Sousa - Filosofia Pilates" class="filosofia-img">
+                        <img src="./img/Pessoal, movimento.jpeg" alt="Dr. José Sousa - Filosofia Pilates" class="filosofia-img" loading="lazy">
                     </div>
                     <div class="filosofia-blog-text">
                         <h3 class="filosofia-blog-title">Pilates: Muito Mais que Movimento</h3>
@@ -600,8 +772,8 @@
                     </p>
                 </div>
                 
-                <div class="testimonials-carousel">
-                    <div class="testimonial-card" id="testimonialCard">
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <i data-lucide="star"></i>
                             <i data-lucide="star"></i>
@@ -609,26 +781,136 @@
                             <i data-lucide="star"></i>
                             <i data-lucide="star"></i>
                         </div>
-                        <p class="testimonial-text" id="testimonialText">
+                        <p class="testimonial-text">
                             "Dr. José transformou minha vida! Sofria com dores nas costas há anos e hoje estou completamente recuperada. Profissional excepcional e muito atencioso."
                         </p>
-                        <div class="testimonial-author" id="testimonialAuthor">Maria Silva</div>
+                        <div class="testimonial-author">Maria Silva</div>
                         <div class="testimonial-role">Paciente de Pilates</div>
                     </div>
-                    
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="previousTestimonial()" aria-label="Depoimento anterior">
-                            <i data-lucide="chevron-left"></i>
-                        </button>
-                        <div class="carousel-dots">
-                            <button class="carousel-dot active" onclick="goToTestimonial(0)" aria-label="Depoimento 1"></button>
-                            <button class="carousel-dot" onclick="goToTestimonial(1)" aria-label="Depoimento 2"></button>
-                            <button class="carousel-dot" onclick="goToTestimonial(2)" aria-label="Depoimento 3"></button>
-                            <button class="carousel-dot" onclick="goToTestimonial(3)" aria-label="Depoimento 4"></button>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
                         </div>
-                        <button class="carousel-btn" onclick="nextTestimonial()" aria-label="Próximo depoimento">
-                            <i data-lucide="chevron-right"></i>
+                        <p class="testimonial-text">
+                            "Após a cirurgia no joelho, pensei que não voltaria a correr. Com o tratamento do Dr. José, não só voltei como melhorei minha performance. Muito grato!"
+                        </p>
+                        <div class="testimonial-author">Carlos Oliveira</div>
+                        <div class="testimonial-role">Atleta Amador</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Excelente profissional! O tratamento para minha tendinite foi muito eficaz. Recomendo para todos que precisam de um fisioterapeuta competente."
+                        </p>
+                        <div class="testimonial-author">Ana Costa</div>
+                        <div class="testimonial-role">Paciente de Fisioterapia</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Depois de meses com dor ciática, finalmente encontrei alívio. Dr. José é muito dedicado e explica tudo detalhadamente. Super recomendo!"
+                        </p>
+                        <div class="testimonial-author">Roberto Santos</div>
+                        <div class="testimonial-role">Paciente de Reabilitação</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq" aria-labelledby="faq-titulo">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">
+                        <i data-lucide="help-circle" style="width: 14px; height: 14px;"></i>
+                        Dúvidas Frequentes
+                    </span>
+                    <h2 id="faq-titulo" class="section-title">
+                        Perguntas <span class="highlight">Frequentes</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Separamos as respostas para as dúvidas mais comuns. Se não encontrar a sua, é só chamar no WhatsApp!
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Como funciona a primeira avaliação?</span>
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
                         </button>
+                        <div class="faq-answer">
+                            <p>A primeira avaliação é uma consulta completa: analisamos sua postura, histórico clínico, dores e objetivos. Com base nisso, montamos um programa personalizado de fisioterapia ou Pilates para o seu caso.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Pilates dói? É indicado para quem sente dor?</span>
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Não. O Pilates é adaptado a cada pessoa e nunca deve causar dor. Pelo contrário: é um dos métodos mais eficazes no alívio de dores na coluna, posturais e musculares, sempre respeitando seus limites.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Em quanto tempo terei resultados?</span>
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>A maioria dos pacientes percebe melhora significativa nas primeiras 4 a 6 semanas com frequência regular de 2 a 3 sessões semanais. Resultados duradouros dependem da constância e do acompanhamento do programa.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Preciso de encaminhamento médico?</span>
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Não é obrigatório para a fisioterapia. Caso você tenha um diagnóstico ou exames, traga para a avaliação, isso ajuda a personalizar ainda melhor o seu tratamento.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>As aulas online funcionam como as presenciais?</span>
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim! As aulas online são ao vivo e personalizadas: adaptamos os exercícios ao seu espaço e aos recursos que você tem em casa. Você recebe o mesmo acompanhamento, com flexibilidade de horários.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Quem pode fazer a Formação Completa em Pilates?</span>
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>A formação de 200h é voltada para fisioterapeutas, educadores físicos e profissionais de saúde que desejam se especializar no Método Pilates, com prática supervisionada e certificação ao final.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -732,7 +1014,7 @@
                             </div>
                         </div>
                         
-                        <div class="contact-info-card">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Studio+de+Postura+Barroso+Rua+Moacir+Luz+310+Canto+da+V%C3%A1rzea+Picos+PI" target="_blank" rel="noopener" class="contact-info-card" style="text-decoration: none;">
                             <div class="contact-info-icon">
                                 <i data-lucide="map-pin"></i>
                             </div>
@@ -740,7 +1022,7 @@
                                 <h4>Studio de Postura Barroso</h4>
                                 <p>Rua Moacir Luz, 310<br>Canto da Várzea - Picos/PI</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -756,7 +1038,7 @@
                         <img src="./logo-jose-sousa-branco.png" alt="Logo Dr. José Sousa" class="logo-image" style="height: 3rem;">
                     </a>
                     <p>Especialista em reabilitação e tratamento da dor. Ajudando pessoas a recuperarem sua mobilidade e qualidade de vida.</p>
-                    <span class="crefito">CREFITO 14: 371030-F</span>
+                    <a href="https://www.crefito14.org.br/" target="_blank" rel="noopener" class="crefito" style="text-decoration: underline;">CREFITO 14: 371030-F</a>
                 </div>
                 
                 <div>
@@ -785,22 +1067,22 @@
                     <h4 class="footer-title">Contato</h4>
                     <div class="footer-contact-item">
                         <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
-                        <span>(89) 9 9458-4100</span>
+                        <a href="https://wa.me/5589994584100" target="_blank" rel="noopener">(89) 9 9458-4100</a>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="instagram" style="width: 18px; height: 18px;"></i>
-                        <span>@josedesousa.pilates</span>
+                        <a href="https://instagram.com/josedesousa.pilates" target="_blank" rel="noopener">@josedesousa.pilates</a>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
-                        <span>Picos - PI</span>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Studio+de+Postura+Barroso+Rua+Moacir+Luz+310+Picos+PI" target="_blank" rel="noopener">Picos - PI</a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 Dr. José Sousa. Todos os direitos reservados.</p>
-                <p class="footer-credit">Desenvolvido por <a href="https://teuzzx.github.io/duotech0/" target="_blank">DUOTECH</a></p>
+                <p class="footer-copyright">© 2026 Dr. José Sousa. Todos os direitos reservados.</p>
+                <p class="footer-credit">Desenvolvido pela <a href="https://norion-sable.vercel.app/" target="_blank">NORION</a></p>
             </div>
             
             <div class="footer-disclaimer">
@@ -810,10 +1092,22 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
+    <script src="enhancements.js?v=3"></script>
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
     </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5589994584100?text=Ol%C3%A1%20Dr.%20Jos%C3%A9!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Falar com Dr. José no WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M16.004 3C8.832 3 3 8.83 3 16c0 2.29.6 4.53 1.74 6.5L3 29l6.65-1.72A12.96 12.96 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16.004 3zm0 23.6c-2.13 0-4.22-.57-6.03-1.65l-.43-.26-3.95 1.02 1.05-3.85-.28-.44A10.56 10.56 0 0 1 5.4 16c0-5.84 4.75-10.6 10.6-10.6S26.6 10.16 26.6 16 21.84 26.6 16 26.6zm5.8-7.93c-.32-.16-1.87-.92-2.16-1.03-.29-.1-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.69.08-.32-.16-1.34-.5-2.55-1.57-.94-.84-1.58-1.87-1.76-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.1-1.12 2.67s1.15 3.1 1.31 3.31c.16.21 2.26 3.45 5.48 4.84.77.33 1.36.53 1.83.68.77.24 1.47.21 2.02.13.62-.09 1.87-.77 2.13-1.5.26-.74.26-1.37.19-1.5-.08-.13-.29-.21-.61-.37z"/>
+        </svg>
+    </a>
 </body>
 </html>

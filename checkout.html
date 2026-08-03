@@ -20,9 +20,10 @@
     <style>
         /* CSS Variables - Design System */
         :root {
-            --primary-hex: #1c3460;
-            --primary-glow-hex: #2a4e8c;
-            --terracotta-hex: #a8643d;
+            --primary-hex: #1e3a5f;
+            --primary-glow-hex: #2d5a8a;
+            --accent-hex: #c9a227;
+            --accent-dark-hex: #a88420;
             --background: #ffffff;
             --foreground: #1a1a1a;
             --border-hex: #e0e0e0;
@@ -31,7 +32,7 @@
             
             --gradient-primary: linear-gradient(135deg, var(--primary-hex), var(--primary-glow-hex));
             --shadow-soft: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
-            --shadow-medium: 0 8px 35px -5px rgba(28, 52, 96, 0.15);
+            --shadow-medium: 0 8px 35px -5px rgba(30, 58, 95, 0.15);
             
             --radius: 0.75rem;
             --radius-md: 0.55rem;
@@ -113,7 +114,7 @@
         }
 
         .back-link:hover {
-            color: white;
+            color: var(--accent-hex);
         }
 
         .back-link i {
@@ -138,10 +139,12 @@
         .product-price-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.6);
+            color: var(--accent-hex);
+            font-weight: 700;
             backdrop-filter: blur(10px);
             padding: 0.75rem 1.25rem;
             border-radius: 2rem;
-            font-weight: 600;
             font-size: 0.9rem;
             margin-bottom: 2rem;
         }
@@ -306,7 +309,7 @@
         }
 
         .terms-text a {
-            color: var(--primary-hex);
+            color: var(--accent-dark-hex);
             text-decoration: none;
             font-weight: 600;
         }
@@ -519,7 +522,7 @@
                 <div>
                     <div class="form-header">
                         <h2>Dados para Entrega</h2>
-                        <p>Preencheha com seus dados para recebermos seu eBook</p>
+                        <p>Preencha com seus dados para receber seu eBook</p>
                     </div>
 
                     <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
